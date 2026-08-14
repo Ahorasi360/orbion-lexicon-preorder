@@ -9,6 +9,7 @@
 - [x] Add Supabase and Resend integration points with safe configuration states until credentials are supplied
 - [ ] Verify the newly created Supabase table accepts a real secure lead request and triggers a confirmation email
 - [ ] Test a live preorder-form submission and Starter Pack submission against Supabase, then confirm the Resend email and gated download behavior
+- [ ] Re-run the Supabase external health tests when sandbox network access is available; the latest run timed out before reaching Supabase
 - [x] Add dedicated tests for edition pricing data and configured/unconfigured preorder capture paths
 - [ ] Activate Supabase lead capture, Resend confirmations, and Stripe payment links when the launch services and delivery plan are ready
 - [ ] Enable the live Supabase and Resend capture path, then test one controlled signup and Starter Pack download
@@ -18,7 +19,11 @@
 - [ ] Confirm the reconnected Vercel account reports user ID xqarWVhVYXdQ9QNki2mcm2PT before production deployment
 - [x] Confirm Multi Servicios 360’s projects is the correct Vercel deployment team
 - [ ] Verify access to anthony-galeanos-projects-08685f3a and deploy the production bundle there
-- [ ] Confirm the GitHub repository backing the Anthony Galeano Vercel project and push the verified Orbion source code to it
+- [ ] Confirm the GitHub repository backs the Anthony Galeano Vercel project and inspect its triggered deployment
+- [x] Push the verified Orbion source code to Ahorasi360/orbion-lexicon-preorder
+- [x] Grant repository-create access to the connected GitHub account or create the empty Orbion repository manually
+- [x] Authorize a repository write path for the source push after GitHub CLI credentials proved read-only
+- [x] Receive the user-created GitHub repository URL: Ahorasi360/orbion-lexicon-preorder
 - [ ] Verify a GitHub-backed Vercel deployment succeeds before connecting orbionlexicon.com
 - [x] Exclude local deployment packaging artifacts from the GitHub source export
 - [x] Verify .deployment/ is ignored and absent from the GitHub export staging set
