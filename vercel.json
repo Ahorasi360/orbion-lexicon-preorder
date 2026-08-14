@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/trpc/:path*",
+      "destination": "https://orbionlexi-4xh5csx5.manus.space/api/trpc/:path*"
+    },
+    {
+      "source": "/manus-storage/:path*",
+      "destination": "https://orbionlexi-4xh5csx5.manus.space/manus-storage/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

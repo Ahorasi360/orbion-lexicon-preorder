@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -175,8 +176,6 @@
     }
   }
 }
-
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
 
 :root { --orbion-navy:#071827; --orbion-soft:#0d263b; --orbion-cyan:#35b8c9; --orbion-gold:#d3a940; --orbion-cream:#f6f1e6; --orbion-ink:#112033; --orbion-muted:#607082; }
 html { scroll-behavior:smooth; background:var(--orbion-navy); }

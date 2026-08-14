@@ -11,6 +11,20 @@
 - [ ] Test a live preorder-form submission and Starter Pack submission against Supabase, then confirm the Resend email and gated download behavior
 - [x] Add dedicated tests for edition pricing data and configured/unconfigured preorder capture paths
 - [ ] Activate Supabase lead capture, Resend confirmations, and Stripe payment links when the launch services and delivery plan are ready
+- [ ] Enable the live Supabase and Resend capture path, then test one controlled signup and Starter Pack download
+- [ ] Complete the Vercel deployment connection and map orbionlexicon.com after Vercel approval
+- [ ] Reconnect Vercel using the correct account, redeploy the verified bundle, and only then attach orbionlexicon.com
+- [ ] Verify the Vercel connector is authorized to Anthony Galeano’s account before redeploying the production site
+- [ ] Confirm the reconnected Vercel account reports user ID xqarWVhVYXdQ9QNki2mcm2PT before production deployment
+- [x] Confirm Multi Servicios 360’s projects is the correct Vercel deployment team
+- [ ] Verify access to anthony-galeanos-projects-08685f3a and deploy the production bundle there
+- [ ] Confirm the GitHub repository backing the Anthony Galeano Vercel project and push the verified Orbion source code to it
+- [ ] Verify a GitHub-backed Vercel deployment succeeds before connecting orbionlexicon.com
+- [x] Exclude local deployment packaging artifacts from the GitHub source export
+- [x] Verify .deployment/ is ignored and absent from the GitHub export staging set
+- [ ] Add Vercel build and rewrite configuration for the pre-launch landing page
+- [ ] Verify the Vercel deployment handoff and record the custom-domain connection steps
+- [x] Align the preorder campaign copy with the now-active Stripe checkout links
 - [x] Add responsive mobile styling, accessibility details, and polished loading/error feedback
 - [x] Write and run Vitest coverage for pricing and preorder form behavior
 - [x] Verify desktop and mobile renderings, then prepare the Vercel and custom-domain handoff
