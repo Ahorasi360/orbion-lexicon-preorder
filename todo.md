@@ -10,7 +10,27 @@
 - [ ] Verify the newly created Supabase table accepts a real secure lead request and triggers a confirmation email
 - [ ] Test a live preorder-form submission and Starter Pack submission against Supabase, then confirm the Resend email and gated download behavior
 - [ ] Re-run the Supabase external health tests when sandbox network access is available; the latest run timed out before reaching Supabase
+- [x] Set the browser and search title to “The Orbion Space Lexicon | Preorder the First Edition”
+- [x] Draft and publish Terms of Sale for the first-edition preorder offer
+- [x] Draft and publish a preorder, cancellation, and refund policy
+- [x] Draft and publish a shipping and delay policy
+- [x] Draft and publish a privacy policy for email-capture and preorder data
+- [x] Add public contact and corrections/errata pages
+- [x] Link all policy pages in the footer and next to preorder/payment actions
+- [x] Draft and publish Terms of Sale for the first-edition preorder offer
+- [x] Draft and publish a preorder, cancellation, and refund policy
+- [x] Draft and publish a shipping and delay policy
+- [x] Draft and publish a privacy policy for email-capture and preorder data
+- [x] Add public contact and corrections/errata pages
+- [x] Link all policy pages in the footer and next to preorder/payment actions
 - [x] Add dedicated tests for edition pricing data and configured/unconfigured preorder capture paths
+- [x] Add the supplied paid-preorder confidence statement beside edition checkout buttons and the main preorder form
+- [x] Add canonical, title, description, Open Graph, and social metadata for the First Edition preorder
+- [ ] Add Book and Product JSON-LD with the three preorder editions and October 31, 2026 delivery context
+- [ ] Add edition-specific Product JSON-LD offers for Collector’s, Hardcover, and Paperback preorder formats
+- [ ] Run a post-change build and verify the SEO metadata, schema, and public policy routes
+- [x] Add robots.txt, sitemap.xml, and AI-crawler guidance files with safe public indexation rules
+- [x] Add targeted space-industry, aerospace reference, and collector-edition preorder keyword coverage without keyword stuffing
 - [ ] Activate Supabase lead capture, Resend confirmations, and Stripe payment links when the launch services and delivery plan are ready
 - [ ] Enable the live Supabase and Resend capture path, then test one controlled signup and Starter Pack download
 - [ ] Complete the Vercel deployment connection and map orbionlexicon.com after Vercel approval
@@ -33,3 +53,7 @@
 - [x] Add responsive mobile styling, accessibility details, and polished loading/error feedback
 - [x] Write and run Vitest coverage for pricing and preorder form behavior
 - [x] Verify desktop and mobile renderings, then prepare the Vercel and custom-domain handoff
+- [x] Replace copied Vercel Stripe environment variables with a secured Manus-backend runtime checkout-link lookup
+- [x] Serve Stripe Payment Links from the secured Manus backend at runtime so the Vercel static build does not need to duplicate them
+- [ ] Verify Collector’s, Hardcover, and Paperback checkout buttons open their configured Stripe destinations in production
+- [x] Increase hero text contrast and readability for the title, supporting copy, and release details before the preorder CTA

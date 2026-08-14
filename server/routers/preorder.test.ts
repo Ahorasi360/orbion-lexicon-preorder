@@ -1,5 +1,9 @@
-import { describe, expect, it } from "vitest";
-import { captureSchema, integrationConfig } from "./preorder";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { captureSchema, integrationConfig, preorderRouter } from "./preorder";
+
+afterEach(() => {
+  vi.unstubAllEnvs();
+});
 
 describe("preorder lead validation", () => {
   it("accepts the form fields required for a preorder lead", () => {
@@ -33,5 +37,19 @@ describe("preorder lead validation", () => {
       "resendApiKey",
       "resendFromEmail",
     ]);
+  });
+
+  it("returns only the configured edition checkout links at runtime", async () => {
+    vi.stubEnv("VITE_STRIPE_COLLECTOR_PAYMENT_LINK", "https://checkout.stripe.com/c/pay/collector");
+    vi.stubEnv("VITE_STRIPE_HARDCOVER_PAYMENT_LINK", "https://checkout.stripe.com/c/pay/hardcover");
+    vi.stubEnv("VITE_STRIPE_PAPERBACK_PAYMENT_LINK", "https://checkout.stripe.com/c/pay/paperback");
+
+    const result = await preorderRouter.createCaller({} as never).checkoutLinks();
+
+    expect(result).toEqual({
+      collector: "https://checkout.stripe.com/c/pay/collector",
+      hardcover: "https://checkout.stripe.com/c/pay/hardcover",
+      paperback: "https://checkout.stripe.com/c/pay/paperback",
+    });
   });
 });
