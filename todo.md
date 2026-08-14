@@ -58,3 +58,6 @@
 - [ ] Verify Collector’s, Hardcover, and Paperback checkout buttons open their configured Stripe destinations in production
 - [ ] Republish the runtime checkout API to the managed backend used by the Vercel rewrite
 - [x] Increase hero text contrast and readability for the title, supporting copy, and release details before the preorder CTA
+- [x] Add an opaque mobile hero-copy treatment so the product image never reduces title and CTA readability
+- [ ] Manually review the final hero treatment on the live Vercel site at desktop and mobile sizes before closing the readability task
+- [ ] Push the mobile hero contrast fix to GitHub and verify its Vercel production deployment
