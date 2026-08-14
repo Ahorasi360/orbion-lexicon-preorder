@@ -86,6 +86,7 @@ async function sendResendConfirmation(lead: LeadInput) {
 }
 
 export const preorderRouter = router({
+  /** Public, runtime-only lookup used by the static Vercel storefront. */
   checkoutLinks: publicProcedure.query(() => ({
     collector: process.env.VITE_STRIPE_COLLECTOR_PAYMENT_LINK || null,
     hardcover: process.env.VITE_STRIPE_HARDCOVER_PAYMENT_LINK || null,

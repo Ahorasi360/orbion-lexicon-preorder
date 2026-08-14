@@ -56,4 +56,5 @@
 - [x] Replace copied Vercel Stripe environment variables with a secured Manus-backend runtime checkout-link lookup
 - [x] Serve Stripe Payment Links from the secured Manus backend at runtime so the Vercel static build does not need to duplicate them
 - [ ] Verify Collector’s, Hardcover, and Paperback checkout buttons open their configured Stripe destinations in production
+- [ ] Republish the runtime checkout API to the managed backend used by the Vercel rewrite
 - [x] Increase hero text contrast and readability for the title, supporting copy, and release details before the preorder CTA
