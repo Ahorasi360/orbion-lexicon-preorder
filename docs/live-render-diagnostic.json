@@ -1,20 +1,26 @@
 {
-  "url": "https://orbion-lexicon-preorder-seven.vercel.app/terms-of-sale",
-  "checkedAt": "2026-08-17T07:09:46.125Z",
+  "url": "https://orbion-lexicon-preorder-seven.vercel.app/book",
+  "checkedAt": "2026-08-17T07:03:10.447Z",
   "consoleErrors": [],
-  "pageErrors": [],
+  "pageErrors": [
+    "Cannot read properties of undefined (reading 'forwardRef')"
+  ],
   "failedRequests": [],
   "rendered": {
-    "title": "Terms of Sale | The Orbion Space Lexicon",
-    "rootText": "THE ORBION\nSPACE LEXICON\nPreorder the First Edition\nFIRST-EDITION PURCHASE TERMS\nTerms of Sale\n\nThese Terms of Sale govern purchases of The Orbion Space Lexicon through Orbion’s approved preorder checkout links.\n\nEffective date: August 13, 2026 · Questions: hello@orbionlexicon.com\n\nThe offer\n\nThe Orbion Space Lexicon is offered in three first-edition formats: the First 1,000 Collector’s Edition at $349, the Hardcover Edition at $149, and the Paperback Edition at $89. The Collector’s Edition is limited to the initial run of 1,000 individually numbered copies and includes the items described on the product page.\n\nA purchase is a paid preorder for a work in final production. Product descriptions, price, availability, and expected delivery timing are presented in good faith and may be clarified or updated before fulfillment where necessary.\n\nPayment and order acceptance\n\nPayments are processed through Stripe checkout. By completing checkout, you authorize the stated charge and confirm that the order and contact details you provide are accurate. An order is accepted when payment is successfully processed and an order confirmation is issued, subject to availability and the policies linked at checkout.\n\nIf a payment cannot be processed, a limited edition is no longer available, or an order cannot reasonably be fulfilled, Orbion may decline or cancel the order and will refund any amount paid for that unfulfilled order.\n\nCollector’s Edition numbering\n\nCollector’s Edition numbers are assigned by Orbion during fulfillment. A requested number is not guaranteed unless Orbion explicitly confirms it in writing. The edition number, signed book, presentation box, and certificate of authenticity are intended to remain matched as a single collector set.\n\nUpdates to these terms\n\nThese terms may be updated to reflect production, fulfillment, legal, or operational changes. The version posted on this page applies to purchases made after its effective date. Material changes affecting an existing paid preorder will be communicated to the customer using the email provided at checkout.\n\nTHE ORBION\nSPACE LEXICON\nTerms of Sale\nPreorder & Refunds\nShipping & Delays\nPrivacy\nContact\nCorrections & Errata\n\n© 2026 Anthony Galeano · Founder, Orbion",
-    "rootChildCount": 2,
-    "bodyText": "THE ORBION\nSPACE LEXICON\nPreorder the First Edition\nFIRST-EDITION PURCHASE TERMS\nTerms of Sale\n\nThese Terms of Sale govern purchases of The Orbion Space Lexicon through Orbion’s approved preorder checkout links.\n\nEffective date: August 13, 2026 · Questions: hello@orbionlexicon.com\n\nThe offer\n\nThe Orbion Space Lexicon is offered in three first-edition formats: the First 1,000 Collector’s Edition at $349, the Hardcover Edition at $149, and the Paperback Edition at $89. The Collector’s Edition is l",
+    "title": "Orbion Online Lexicon | The Language of Space, Connected.",
+    "rootText": "",
+    "rootChildCount": 0,
+    "bodyText": "",
     "resources": [
-      "https://orbion-lexicon-preorder-seven.vercel.app/assets/index-BFB4JHr3.js",
+      "https://orbion-lexicon-preorder-seven.vercel.app/assets/index-GHMl-Mv9.js",
+      "https://orbion-lexicon-preorder-seven.vercel.app/assets/ui-vendor-DAyZn5XF.js",
+      "https://orbion-lexicon-preorder-seven.vercel.app/assets/vendor-G_roeFoA.js",
+      "https://orbion-lexicon-preorder-seven.vercel.app/assets/react-vendor-BUZQQa5q.js",
+      "https://orbion-lexicon-preorder-seven.vercel.app/assets/trpc-vendor-PEjip8yT.js",
+      "https://orbion-lexicon-preorder-seven.vercel.app/assets/query-vendor-D2e3UWNG.js",
+      "https://orbion-lexicon-preorder-seven.vercel.app/assets/icons-vendor-DPrz9hMt.js",
       "https://orbion-lexicon-preorder-seven.vercel.app/assets/index-DEJk40Lv.css",
       "https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap",
-      "https://orbion-lexicon-preorder-seven.vercel.app/assets/LegalPage-D0HEGRMe.js",
-      "https://orbion-lexicon-preorder-seven.vercel.app/assets/Seo-DqaouUke.js",
       "https://orbion-lexicon-preorder-seven.vercel.app/favicon.ico"
     ]
   }
