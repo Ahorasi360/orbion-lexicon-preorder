@@ -1,0 +1,19 @@
+{
+  "url": "https://orbion-lexicon-preorder-seven.vercel.app/",
+  "checkedAt": "2026-08-17T06:55:54.418Z",
+  "consoleErrors": [
+    "Failed to load resource: net::ERR_HTTP2_PROTOCOL_ERROR"
+  ],
+  "failedRequests": [
+    {
+      "url": "https://orbion-lexicon-preorder-seven.vercel.app/%VITE_ANALYTICS_ENDPOINT%/umami",
+      "failure": "net::ERR_HTTP2_PROTOCOL_ERROR"
+    }
+  ],
+  "rendered": {
+    "title": "Orbion Online Lexicon | The Language of Space, Connected.",
+    "rootText": "",
+    "rootChildCount": 0,
+    "bodyText": ""
+  }
+}

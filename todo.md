@@ -87,3 +87,6 @@
 - [x] Click-test every visible desktop and mobile `/book` navigation, footer, policy, preview, and preorder-list link
 - [x] Re-verify all three `/book` checkout controls resolve through the runtime checkout procedure without opening or submitting checkout
 - [x] Click-test mobile `/book` footer and policy links plus mobile preview and preorder-list controls, then record the extended regression result
+- [ ] Push the repaired `/book` release to the GitHub-backed production site and verify its live navigation links
+- [ ] Fix the live Vercel SPA fallback so `/book` and other public client routes do not return 404 after deployment
+- [ ] Diagnose and fix the live Vercel client-render issue if the published `/book` page remains blank after route fallback resolves
