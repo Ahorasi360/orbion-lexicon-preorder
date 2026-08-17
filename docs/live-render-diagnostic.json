@@ -1,7 +1,10 @@
 {
   "url": "https://orbion-lexicon-preorder-seven.vercel.app/book",
-  "checkedAt": "2026-08-17T06:58:54.747Z",
+  "checkedAt": "2026-08-17T07:03:10.447Z",
   "consoleErrors": [],
+  "pageErrors": [
+    "Cannot read properties of undefined (reading 'forwardRef')"
+  ],
   "failedRequests": [],
   "rendered": {
     "title": "Orbion Online Lexicon | The Language of Space, Connected.",
@@ -14,8 +17,8 @@
       "https://orbion-lexicon-preorder-seven.vercel.app/assets/vendor-G_roeFoA.js",
       "https://orbion-lexicon-preorder-seven.vercel.app/assets/react-vendor-BUZQQa5q.js",
       "https://orbion-lexicon-preorder-seven.vercel.app/assets/trpc-vendor-PEjip8yT.js",
-      "https://orbion-lexicon-preorder-seven.vercel.app/assets/icons-vendor-DPrz9hMt.js",
       "https://orbion-lexicon-preorder-seven.vercel.app/assets/query-vendor-D2e3UWNG.js",
+      "https://orbion-lexicon-preorder-seven.vercel.app/assets/icons-vendor-DPrz9hMt.js",
       "https://orbion-lexicon-preorder-seven.vercel.app/assets/index-DEJk40Lv.css",
       "https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap",
       "https://orbion-lexicon-preorder-seven.vercel.app/favicon.ico"

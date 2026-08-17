@@ -90,3 +90,4 @@
 - [ ] Push the repaired `/book` release to the GitHub-backed production site and verify its live navigation links
 - [ ] Fix the live Vercel SPA fallback so `/book` and other public client routes do not return 404 after deployment
 - [ ] Diagnose and fix the live Vercel client-render issue if the published `/book` page remains blank after route fallback resolves
+- [ ] Eliminate the user-confirmed live Vercel blank screen and verify visible homepage and Book-route content in a real browser
