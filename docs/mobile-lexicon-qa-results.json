@@ -1,0 +1,13 @@
+{
+  "baseUrl": "http://127.0.0.1:3000",
+  "checkedAt": "2026-08-17T07:19:00.632Z",
+  "initialCards": 500,
+  "menuVisible": true,
+  "letterCards": 24,
+  "lettersMatch": true,
+  "searchCards": 1,
+  "searchIncludesAcceleration": true,
+  "clearedValue": "",
+  "overflow": false,
+  "errors": []
+}

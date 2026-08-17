@@ -14,6 +14,7 @@
     "content:sitemap": "node scripts/generate-sitemap.mjs",
     "qa:keyboard": "node scripts/keyboard-qa.mjs",
     "qa:book-links": "node scripts/book-link-qa.mjs",
+    "qa:mobile-lexicon": "node scripts/mobile-lexicon-qa.mjs",
     "qa:live-render": "node scripts/live-render-diagnostic.mjs"
   },
   "dependencies": {
