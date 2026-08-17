@@ -28,6 +28,17 @@ describe("preorder lead validation", () => {
     ).toThrow();
   });
 
+  it("accepts the dedicated Orbion Intelligence early-access source", () => {
+    expect(
+      captureSchema.parse({
+        name: "Avery Stone",
+        email: "avery@example.com",
+        editionInterest: "updates",
+        source: "intelligence-waitlist",
+      }),
+    ).toMatchObject({ source: "intelligence-waitlist" });
+  });
+
   it("keeps the service configuration server-only", () => {
     const config = integrationConfig();
     expect(Object.keys(config)).toEqual([

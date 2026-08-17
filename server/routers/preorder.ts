@@ -7,7 +7,7 @@ const captureSchema = z.object({
   name: z.string().trim().min(2, "Please enter your name.").max(120),
   email: z.string().trim().email("Please enter a valid email address.").max(320),
   editionInterest: z.enum(["collector", "hardcover", "paperback", "starter-pack", "updates"]),
-  source: z.enum(["preorder-form", "starter-pack-form"]),
+  source: z.enum(["preorder-form", "starter-pack-form", "intelligence-waitlist"]),
 });
 
 type LeadInput = z.infer<typeof captureSchema>;
@@ -59,9 +59,12 @@ async function sendResendConfirmation(lead: LeadInput) {
   if (!resendApiKey || !resendFromEmail) return;
 
   const isStarterPack = lead.source === "starter-pack-form";
+  const isIntelligenceWaitlist = lead.source === "intelligence-waitlist";
   const subject = isStarterPack
     ? "Your Orbion Space Lexicon Starter Pack"
-    : "You’re on the Orbion Space Lexicon first-edition list";
+    : isIntelligenceWaitlist
+      ? "You’re on the Orbion Intelligence early-access list"
+      : "You’re on the Orbion Space Lexicon first-edition list";
   const previewNote = isStarterPack
     ? `<p>Your 10-page illustrated preview is ready: <a href="${starterPackUrl}">download the Starter Pack</a>.</p>`
     : "";
@@ -76,7 +79,7 @@ async function sendResendConfirmation(lead: LeadInput) {
       from: resendFromEmail,
       to: [lead.email],
       subject,
-      html: `<div style="font-family:Georgia,serif;color:#0A1A2B;max-width:560px;margin:auto"><p style="font-family:Arial,sans-serif;letter-spacing:.08em;color:#28B7CF;font-size:12px">THE ORBION SPACE LEXICON</p><h1 style="font-size:28px">Thank you, ${lead.name}.</h1><p>You are now on the first-edition list for <strong>The Orbion Space Lexicon</strong>.</p><p>The expected delivery date is <strong>October 31, 2026</strong>.</p>${previewNote}<p style="margin-top:28px">— Anthony Galeano<br/>Founder, Orbion</p></div>`,
+      html: `<div style="font-family:Georgia,serif;color:#0A1A2B;max-width:560px;margin:auto"><p style="font-family:Arial,sans-serif;letter-spacing:.08em;color:#28B7CF;font-size:12px">ORBION</p><h1 style="font-size:28px">Thank you, ${lead.name}.</h1>${isIntelligenceWaitlist ? "<p>You are now on the early-access list for <strong>Orbion Intelligence</strong>, which is currently in development.</p><p>We will share future product updates by email.</p>" : "<p>You are now on the first-edition list for <strong>The Orbion Space Lexicon</strong>.</p><p>The expected delivery date is <strong>October 31, 2026</strong>.</p>"}${previewNote}<p style="margin-top:28px">— Anthony Galeano<br/>Founder, Orbion</p></div>`,
     }),
   });
 

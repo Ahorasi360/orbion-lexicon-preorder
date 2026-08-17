@@ -1,0 +1,1593 @@
+{
+  "baseUrl": "http://127.0.0.1:3000",
+  "checkedAt": "2026-08-17T04:50:20.821Z",
+  "routeCount": 18,
+  "viewportCount": 2,
+  "failures": [],
+  "results": [
+    {
+      "viewport": "desktop",
+      "route": "/",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "ORBIONONLINE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Explore",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Lexicon",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Domains",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Maps",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/book",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "button",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Online Lexicon",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Collector’s Edition",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Editions",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Preview",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Preorder",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/lexicon",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "ORBIONONLINE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Explore",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Lexicon",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Domains",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Maps",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/lexicon/spaceflight",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "ORBIONONLINE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Explore",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Lexicon",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Domains",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Maps",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/domains",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "ORBIONONLINE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Explore",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Lexicon",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Domains",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Maps",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/domains/spaceflight-foundations-physics",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "ORBIONONLINE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Explore",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Lexicon",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Domains",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Maps",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/maps",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "ORBIONONLINE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Explore",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Lexicon",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Domains",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Maps",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/methodology",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "ORBIONONLINE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Explore",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Lexicon",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Domains",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Maps",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/sources",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "ORBIONONLINE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Explore",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Lexicon",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Domains",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Maps",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/search",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "button",
+          "text": "Search",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Spaceflight",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Launch",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Space law",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Lexicon",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Domains",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/about",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "ORBIONONLINE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Explore",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Lexicon",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Domains",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Maps",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/intelligence",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "ORBIONONLINE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Explore",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Lexicon",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Domains",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Maps",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/terms-of-sale",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Preorder the First Edition",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "hello@orbionlexicon.com",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Terms of Sale",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Preorder & Refunds",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/preorder-refund-policy",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Preorder the First Edition",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "hello@orbionlexicon.com",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Terms of Sale",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Preorder & Refunds",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/shipping-delay-policy",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Preorder the First Edition",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "hello@orbionlexicon.com",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Terms of Sale",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Preorder & Refunds",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/privacy-policy",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Preorder the First Edition",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "hello@orbionlexicon.com",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Terms of Sale",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Preorder & Refunds",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/contact",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Preorder the First Edition",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "hello@orbionlexicon.com",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Terms of Sale",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Preorder & Refunds",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/corrections",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Preorder the First Edition",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "hello@orbionlexicon.com",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Terms of Sale",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Preorder & Refunds",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "ORBIONONLINE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Open navigation menu",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "input",
+          "text": "Search the Orbion Lexicon",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Search",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "How Orbion approaches evidence",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/book",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "button",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Toggle navigation",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Join the preorder list",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Read the illustrated preview",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Preorder Collector’s",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Preorder Hardcover",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/lexicon",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "ORBIONONLINE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Open navigation menu",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "input",
+          "text": "Search terms",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "All",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "A",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/lexicon/spaceflight",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "ORBIONONLINE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Open navigation menu",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Orbion",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Lexicon",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "How evidence is handled",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/domains",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "ORBIONONLINE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Open navigation menu",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "41Spaceflight Foundations & PhysicsEntries 001–022 in the manuscript's",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "42Orbital Mechanics & RegimesEntries 023–054 in the manuscript's edito",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "43Launch Vehicles & PropulsionEntries 055–094 in the manuscript's edit",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/domains/spaceflight-foundations-physics",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "ORBIONONLINE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Open navigation menu",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Orbion",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Domains",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Filter in Lexicon",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/maps",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "ORBIONONLINE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Open navigation menu",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Explore orbital mechanics",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Explore mission design",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Explore commercial models",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/methodology",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "ORBIONONLINE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Open navigation menu",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Browse sources →",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Lexicon",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Domains",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/sources",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "ORBIONONLINE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Open navigation menu",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "input",
+          "text": "Filter source records",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Lexicon",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Domains",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/search",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "button",
+          "text": "Search",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Spaceflight",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Launch",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Space law",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Lexicon",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Domains",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/about",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "ORBIONONLINE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Open navigation menu",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "hello@orbionlexicon.com",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Explore the First Edition",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Orbion Intelligence",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/intelligence",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "ORBIONONLINE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "Open navigation menu",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Join early access",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "input",
+          "text": "",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "input",
+          "text": "",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/terms-of-sale",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Preorder the First Edition",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "hello@orbionlexicon.com",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Terms of Sale",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Preorder & Refunds",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/preorder-refund-policy",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Preorder the First Edition",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "hello@orbionlexicon.com",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Terms of Sale",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Preorder & Refunds",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/shipping-delay-policy",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Preorder the First Edition",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "hello@orbionlexicon.com",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Terms of Sale",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Preorder & Refunds",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/privacy-policy",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Preorder the First Edition",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "hello@orbionlexicon.com",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Terms of Sale",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Preorder & Refunds",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/contact",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Preorder the First Edition",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "hello@orbionlexicon.com",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Terms of Sale",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Preorder & Refunds",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/corrections",
+      "overflow": false,
+      "focusSamples": [
+        {
+          "tag": "a",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Preorder the First Edition",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "hello@orbionlexicon.com",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "THE ORBIONSPACE LEXICON",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Terms of Sale",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "a",
+          "text": "Preorder & Refunds",
+          "visible": true,
+          "focusStyle": "solid"
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

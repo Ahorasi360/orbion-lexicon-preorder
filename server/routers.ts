@@ -2,6 +2,7 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
+import { lexiconRouter } from "./routers/lexicon";
 import { preorderRouter } from "./routers/preorder";
 
 export const appRouter = router({
@@ -18,13 +19,7 @@ export const appRouter = router({
     }),
   }),
   preorder: preorderRouter,
-
-  // TODO: add feature routers here, e.g.
-  // todo: router({
-  //   list: protectedProcedure.query(({ ctx }) =>
-  //     db.getUserTodos(ctx.user.id)
-  //   ),
-  // }),
+  lexicon: lexiconRouter,
 });
 
 export type AppRouter = typeof appRouter;

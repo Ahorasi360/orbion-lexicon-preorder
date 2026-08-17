@@ -26,28 +26,29 @@
 - [x] Add dedicated tests for edition pricing data and configured/unconfigured preorder capture paths
 - [x] Add the supplied paid-preorder confidence statement beside edition checkout buttons and the main preorder form
 - [x] Add canonical, title, description, Open Graph, and social metadata for the First Edition preorder
-- [ ] Add Book and Product JSON-LD with the three preorder editions and October 31, 2026 delivery context
-- [ ] Add edition-specific Product JSON-LD offers for Collector’s, Hardcover, and Paperback preorder formats
-- [ ] Run a post-change build and verify the SEO metadata, schema, and public policy routes
+- [x] Add Book and Product JSON-LD with the three preorder editions and October 31, 2026 delivery context
+- [x] Add edition-specific Product JSON-LD offers for Collector’s, Hardcover, and Paperback preorder formats
+- [x] Run a post-change build and verify the SEO metadata, schema, and public policy routes
 - [x] Add robots.txt, sitemap.xml, and AI-crawler guidance files with safe public indexation rules
 - [x] Add targeted space-industry, aerospace reference, and collector-edition preorder keyword coverage without keyword stuffing
 - [ ] Activate Supabase lead capture, Resend confirmations, and Stripe payment links when the launch services and delivery plan are ready
 - [ ] Enable the live Supabase and Resend capture path, then test one controlled signup and Starter Pack download
 - [ ] Complete the Vercel deployment connection and map orbionlexicon.com after Vercel approval
-- [ ] Reconnect Vercel using the correct account, redeploy the verified bundle, and only then attach orbionlexicon.com
+- [x] Reconnect Vercel using the correct account and redeploy the verified bundle
+- [ ] Attach orbionlexicon.com to the correct Vercel project, complete any DNS steps, and verify the public domain resolves to production
 - [ ] Verify the Vercel connector is authorized to Anthony Galeano’s account before redeploying the production site
 - [ ] Confirm the reconnected Vercel account reports user ID xqarWVhVYXdQ9QNki2mcm2PT before production deployment
 - [x] Confirm Multi Servicios 360’s projects is the correct Vercel deployment team
-- [ ] Verify access to anthony-galeanos-projects-08685f3a and deploy the production bundle there
-- [ ] Confirm the GitHub repository backs the Anthony Galeano Vercel project and inspect its triggered deployment
+- [x] Verify access to anthony-galeanos-projects-08685f3a and deploy the production bundle there
+- [x] Confirm the GitHub repository backs the Anthony Galeano Vercel project and inspect its triggered deployment
 - [x] Push the verified Orbion source code to Ahorasi360/orbion-lexicon-preorder
 - [x] Grant repository-create access to the connected GitHub account or create the empty Orbion repository manually
 - [x] Authorize a repository write path for the source push after GitHub CLI credentials proved read-only
 - [x] Receive the user-created GitHub repository URL: Ahorasi360/orbion-lexicon-preorder
-- [ ] Verify a GitHub-backed Vercel deployment succeeds before connecting orbionlexicon.com
+- [x] Verify a GitHub-backed Vercel deployment succeeds before connecting orbionlexicon.com
 - [x] Exclude local deployment packaging artifacts from the GitHub source export
 - [x] Verify .deployment/ is ignored and absent from the GitHub export staging set
-- [ ] Add Vercel build and rewrite configuration for the pre-launch landing page
+- [x] Add Vercel build and rewrite configuration for the pre-launch landing page
 - [ ] Verify the Vercel deployment handoff and record the custom-domain connection steps
 - [x] Align the preorder campaign copy with the now-active Stripe checkout links
 - [x] Add responsive mobile styling, accessibility details, and polished loading/error feedback
@@ -55,9 +56,30 @@
 - [x] Verify desktop and mobile renderings, then prepare the Vercel and custom-domain handoff
 - [x] Replace copied Vercel Stripe environment variables with a secured Manus-backend runtime checkout-link lookup
 - [x] Serve Stripe Payment Links from the secured Manus backend at runtime so the Vercel static build does not need to duplicate them
-- [ ] Verify Collector’s, Hardcover, and Paperback checkout buttons open their configured Stripe destinations in production
-- [ ] Republish the runtime checkout API to the managed backend used by the Vercel rewrite
+- [x] Verify Collector’s, Hardcover, and Paperback checkout buttons receive their configured Stripe destinations in production
+- [x] Republish the runtime checkout API to the managed backend used by the Vercel rewrite
 - [x] Increase hero text contrast and readability for the title, supporting copy, and release details before the preorder CTA
 - [x] Add an opaque mobile hero-copy treatment so the product image never reduces title and CTA readability
 - [ ] Manually review the final hero treatment on the live Vercel site at desktop and mobile sizes before closing the readability task
-- [ ] Push the mobile hero contrast fix to GitHub and verify its Vercel production deployment
+- [ ] Confirm the Vercel production deployment for commit ec40d42 is ready and manually review its live desktop and mobile hero treatment
+- [x] Preserve the existing preorder landing experience as the working /book commercial route without changing its $89, $149, or $349 checkout behavior
+- [x] Add unified public platform routes for home, Lexicon, individual terms, domains, maps, methodology, sources, search, about, and Intelligence preview
+- [ ] Preserve existing Vercel project, GitHub repository, production deployment, analytics, SEO, and public URLs while extending the platform
+- [x] Design the Online Lexicon so a future authenticated app.orbionlexicon.com intelligence product can connect cleanly without exposing internal material
+- [x] Document the public-content rule, approved manuscript findings, route architecture, and preorder-preservation constraint
+- [x] Add normalized Lexicon, domain, source, claim, and relation tables through an applied Drizzle migration
+- [x] Build a repeatable manuscript-to-JSON import workflow with review-status safeguards and source-preserving records
+- [x] Expose public read-only Lexicon, domain, source, and search procedures through the existing tRPC backend
+- [x] Build reusable individual-term and individual-domain pages with source-aware local connection views
+- [x] Add the public maps, methodology, sources, search, about, and Orbion Intelligence preview routes
+- [x] Add vendor-neutral analytics event hooks for core Lexicon, book, and Intelligence interactions
+- [x] Add vendor-neutral `preorder_click` tracking to all `/book` checkout and preorder-list calls to action
+- [x] Add route-aware titles, descriptions, canonicals, Open Graph data, and DefinedTerm/Breadcrumb structured data for the public Lexicon
+- [x] Generate and validate an XML sitemap covering platform routes, domains, and stable Lexicon term URLs
+- [ ] Verify all `/book` checkout links, preorder capture actions, and policy links remain functional after the route migration
+- [x] Complete desktop and mobile route QA, including visible focus states, overflow checks, and browser-console review
+- [x] Update policy-page preorder return links to target `/book#preorder` after the public homepage migration
+- [x] Code-split public routes to reduce initial bundle cost and preserve fast exploration on constrained connections
+- [x] Update the project README with architecture, content import, deployment, preserved preorder, and future Intelligence handoff guidance
+- [x] Complete documented keyboard-focus and all-route desktop/mobile QA, including legal routes and overflow checks
+- [x] Further split heavy vendor code to reduce the initial main client bundle and clear the build-size warning

@@ -1,17 +1,42 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
+import { lazy, Suspense } from "react";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import Home from "./pages/Home";
-import LegalPage from "./pages/LegalPage";
+
+const PlatformHome = lazy(() => import("./pages/PlatformHome"));
+const BookPage = lazy(() => import("./pages/BookPage"));
+const LexiconPage = lazy(() => import("./pages/LexiconPage"));
+const LexiconEntryPage = lazy(() => import("./pages/LexiconEntryPage"));
+const DomainsPage = lazy(() => import("./pages/DomainsPage"));
+const DomainPage = lazy(() => import("./pages/DomainPage"));
+const MapsPage = lazy(() => import("./pages/MapsPage"));
+const MethodologyPage = lazy(() => import("./pages/MethodologyPage"));
+const SourcesPage = lazy(() => import("./pages/SourcesPage"));
+const SearchPage = lazy(() => import("./pages/SearchPage"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const IntelligencePage = lazy(() => import("./pages/IntelligencePage"));
+const LegalPage = lazy(() => import("./pages/LegalPage"));
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
-    <Switch>
-      <Route path={"/"} component={Home} />
+    <Suspense fallback={<div className="route-loading" role="status">Loading Orbion…</div>}>
+      <Switch>
+      <Route path={"/"} component={PlatformHome} />
+      <Route path={"/book"} component={BookPage} />
+      <Route path={"/lexicon"} component={LexiconPage} />
+      <Route path={"/lexicon/:term"} component={LexiconEntryPage} />
+      <Route path={"/domains"} component={DomainsPage} />
+      <Route path={"/domains/:domain"} component={DomainPage} />
+      <Route path={"/maps"} component={MapsPage} />
+      <Route path={"/methodology"} component={MethodologyPage} />
+      <Route path={"/sources"} component={SourcesPage} />
+      <Route path={"/search"} component={SearchPage} />
+      <Route path={"/about"} component={AboutPage} />
+      <Route path={"/intelligence"} component={IntelligencePage} />
       <Route path={"/terms-of-sale"}>{() => <LegalPage slug="terms-of-sale" />}</Route>
       <Route path={"/preorder-refund-policy"}>{() => <LegalPage slug="preorder-refund-policy" />}</Route>
       <Route path={"/shipping-delay-policy"}>{() => <LegalPage slug="shipping-delay-policy" />}</Route>
@@ -21,7 +46,8 @@ function Router() {
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
-    </Switch>
+      </Switch>
+    </Suspense>
   );
 }
 

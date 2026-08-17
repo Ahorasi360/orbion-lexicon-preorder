@@ -1,0 +1,21 @@
+export type OrbionAnalyticsEvent =
+  | "lexicon_search"
+  | "lexicon_entry_view"
+  | "related_term_click"
+  | "domain_view"
+  | "map_open"
+  | "source_open"
+  | "book_cta_click"
+  | "intelligence_cta_click"
+  | "preorder_click"
+  | "waitlist_signup";
+
+/**
+ * Vendor-neutral client event hook. A future analytics integration can listen
+ * for the `orbion:analytics` browser event or wrap this function without
+ * changing the public experience.
+ */
+export function trackEvent(name: OrbionAnalyticsEvent, properties: Record<string, string | number | boolean | undefined> = {}) {
+  if (typeof window === "undefined") return;
+  window.dispatchEvent(new CustomEvent("orbion:analytics", { detail: { name, properties, occurredAt: new Date().toISOString() } }));
+}

@@ -1,6 +1,6 @@
-import { eq } from "drizzle-orm";
+import { asc, eq, inArray } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users } from "../drizzle/schema";
+import { InsertUser, lexiconEntries, sources, users, domains } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -89,4 +89,34 @@ export async function getUserByOpenId(openId: string) {
   return result.length > 0 ? result[0] : undefined;
 }
 
-// TODO: add feature queries here as your schema grows.
+/** Read-only public content helpers for the Online Lexicon. */
+export async function listLexiconEntries() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(lexiconEntries).orderBy(asc(lexiconEntries.canonicalName));
+}
+
+export async function getLexiconEntryBySlug(slug: string) {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db.select().from(lexiconEntries).where(eq(lexiconEntries.slug, slug)).limit(1);
+  return result[0];
+}
+
+export async function listLexiconDomains() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(domains).orderBy(asc(domains.id));
+}
+
+export async function listLexiconSources() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(sources).orderBy(asc(sources.orbionId));
+}
+
+export async function listSourcesByOrbionIds(orbionIds: string[]) {
+  const db = await getDb();
+  if (!db || orbionIds.length === 0) return [];
+  return db.select().from(sources).where(inArray(sources.orbionId, orbionIds));
+}

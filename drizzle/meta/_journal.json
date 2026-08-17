@@ -8,6 +8,20 @@
       "when": 1786598236601,
       "tag": "0000_mean_kingpin",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1786940485323,
+      "tag": "0001_rare_captain_stacy",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1786940728984,
+      "tag": "0002_sour_proudstar",
+      "breakpoints": true
     }
   ]
 }

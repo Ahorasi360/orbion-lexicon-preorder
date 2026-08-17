@@ -6,6 +6,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Check, ChevronDown, ExternalLink, FileText, Gem, Mail, Menu, ShieldCheck, Sparkles, X } from "lucide-react";
 import { toast } from "sonner";
 import { trpc } from "@/lib/trpc";
+import { trackEvent } from "@/lib/analytics";
 import { editions as editionCatalog } from "@/data/editions";
 import { PolicyLinks } from "@/pages/LegalPage";
 
@@ -32,6 +33,7 @@ function EditionButton({ edition, checkoutLink, isLoading }: { edition: (typeof 
       toast.info(isLoading ? "Preparing secure checkout" : "Checkout is temporarily unavailable", { description: isLoading ? "Please try again in a moment." : "Please contact hello@orbionlexicon.com for preorder help." });
       return;
     }
+    trackEvent("preorder_click", { edition: edition.id, placement: "edition_card" });
     window.open(checkoutLink, "_blank", "noopener,noreferrer");
   };
   const label = edition.name.includes("Collector") ? "Collector’s" : edition.name.includes("Hardcover") ? "Hardcover" : "Paperback";
@@ -49,6 +51,7 @@ function LeadForm({ source, compact = false, onSuccess }: { source: FormSource; 
         return;
       }
       toast.success(source === "starter-pack-form" ? "Your Starter Pack is ready" : "You’re on the first-edition list", { description: "We’ll email you your confirmation and October 31, 2026 delivery update." });
+      trackEvent("waitlist_signup", { source, editionInterest });
       setName("");
       setEmail("");
       onSuccess?.(result.starterPackUrl);
@@ -77,18 +80,19 @@ export default function Home() {
   const [starterUrl, setStarterUrl] = useState<string | null>(null);
   const checkoutLinks = trpc.preorder.checkoutLinks.useQuery(undefined, { staleTime: 1000 * 60 * 30 });
   const scrollTo = (id: string) => { document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" }); setMobileMenuOpen(false); };
+  const goToPreorder = (placement: string) => { trackEvent("preorder_click", { placement, action: "open_preorder_list" }); scrollTo("preorder"); };
   return (
     <div className="orbion-site">
       <header className="site-header">
         <button className="wordmark" onClick={() => scrollTo("top")} aria-label="Back to the top of the page"><span>THE ORBION</span><strong>SPACE LEXICON</strong></button>
-        <nav className={mobileMenuOpen ? "nav-links open" : "nav-links"} aria-label="Main navigation"><button onClick={() => scrollTo("edition")}>Collector’s Edition</button><button onClick={() => scrollTo("compare")}>Editions</button><button onClick={() => scrollTo("preview")}>Preview</button><button onClick={() => scrollTo("preorder")}>Preorder</button></nav>
-        <button className="header-cta" onClick={() => scrollTo("preorder")}>Join the list</button>
+        <nav className={mobileMenuOpen ? "nav-links open" : "nav-links"} aria-label="Main navigation"><a href="/">Online Lexicon</a><button onClick={() => scrollTo("edition")}>Collector’s Edition</button><button onClick={() => scrollTo("compare")}>Editions</button><button onClick={() => scrollTo("preview")}>Preview</button><button onClick={() => goToPreorder("book_navigation")}>Preorder</button></nav>
+        <button className="header-cta" onClick={() => goToPreorder("book_header")}>Join the list</button>
         <button className="mobile-menu" onClick={() => setMobileMenuOpen((open) => !open)} aria-label="Toggle navigation">{mobileMenuOpen ? <X /> : <Menu />}</button>
       </header>
       <main id="top">
         <section className="hero section-shell">
           <div className="orbital-glow" aria-hidden="true" />
-          <div className="hero-copy"><p className="eyebrow"><Sparkles className="h-4 w-4" /> FIRST EDITION · 2026</p><h1>The Orbion<br /><em>Space Lexicon</em></h1><p className="hero-tagline">500 essential concepts for the modern space industry</p><p className="hero-body">A visually led professional reference that turns the language of modern spaceflight into a practical system of understanding.</p><div className="hero-actions"><Button onClick={() => scrollTo("preorder")} className="collector-button">Join the preorder list <ChevronDown className="ml-2 h-4 w-4" /></Button><button className="text-link" onClick={() => scrollTo("preview")}>Read the illustrated preview</button></div><div className="hero-meta"><span>EXPECTED DELIVERY</span><strong>OCTOBER 31, 2026</strong></div></div>
+          <div className="hero-copy"><p className="eyebrow"><Sparkles className="h-4 w-4" /> FIRST EDITION · 2026</p><h1>The Orbion<br /><em>Space Lexicon</em></h1><p className="hero-tagline">500 essential concepts for the modern space industry</p><p className="hero-body">A visually led professional reference that turns the language of modern spaceflight into a practical system of understanding.</p><div className="hero-actions"><Button onClick={() => goToPreorder("book_hero")} className="collector-button">Join the preorder list <ChevronDown className="ml-2 h-4 w-4" /></Button><button className="text-link" onClick={() => scrollTo("preview")}>Read the illustrated preview</button></div><div className="hero-meta"><span>EXPECTED DELIVERY</span><strong>OCTOBER 31, 2026</strong></div></div>
           <div className="hero-product"><div className="product-halo" aria-hidden="true" /><img src={productMockup} alt="The Orbion Space Lexicon Collector’s Edition hardcover, presentation box, certificate, and numbered plate" /><p>First 1,000 Collector’s Edition <span>·</span> $349</p></div>
         </section>
         <section className="visual-proof section-shell">
@@ -103,7 +107,7 @@ export default function Home() {
         <section id="preorder" className="preorder-section section-shell"><div className="preorder-info"><p className="eyebrow"><Gem className="h-4 w-4" /> THE FIRST 1,000 COLLECTOR’S EDITION</p><h2>Claim your place in<br /><em>the first edition.</em></h2><p>Join the preorder list for release details, early collector updates, and the moment the edition becomes available.</p><div className="delivery-card"><ShieldCheck /><div><span>EXPECTED DELIVERY</span><strong>October 31, 2026</strong></div></div></div><div className="preorder-form-shell"><LeadForm source="preorder-form" /><PreorderConfidence /></div></section>
       </main>
       <footer><div className="footer-brand"><span>THE ORBION</span><strong>SPACE LEXICON</strong></div><PolicyLinks /><p>© 2026 Anthony Galeano · Founder, Orbion</p><button onClick={() => scrollTo("top")}>Back to top ↑</button></footer>
-      <div className="sticky-preorder"><div><span>FIRST 1,000 COLLECTOR’S EDITION</span><strong>$349 · Signed · Numbered · Boxed</strong></div><Button onClick={() => scrollTo("preorder")} className="collector-button">Join the list</Button></div>
+      <div className="sticky-preorder"><div><span>FIRST 1,000 COLLECTOR’S EDITION</span><strong>$349 · Signed · Numbered · Boxed</strong></div><Button onClick={() => goToPreorder("book_sticky") } className="collector-button">Join the list</Button></div>
     </div>
   );
 }

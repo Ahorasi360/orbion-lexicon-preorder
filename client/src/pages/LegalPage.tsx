@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import Seo from "@/components/Seo";
 
 type PolicySection = {
   heading: string;
@@ -97,12 +97,8 @@ export function PolicyLinks({ className = "" }: { className?: string }) {
 export default function LegalPage({ slug }: { slug: keyof typeof pages }) {
   const page = pages[slug];
 
-  useEffect(() => {
-    document.title = `${page.title} | The Orbion Space Lexicon`;
-  }, [page.title]);
-
-  return <div className="legal-site">
-    <header className="legal-header"><a className="legal-wordmark" href="/"><span>THE ORBION</span><strong>SPACE LEXICON</strong></a><a className="legal-preorder-link" href="/#preorder">Preorder the First Edition</a></header>
+  return <><Seo title={`${page.title} | The Orbion Space Lexicon`} description={page.summary} canonicalPath={`/${slug}`} /><div className="legal-site">
+    <header className="legal-header"><a className="legal-wordmark" href="/"><span>THE ORBION</span><strong>SPACE LEXICON</strong></a><a className="legal-preorder-link" href="/book#preorder">Preorder the First Edition</a></header>
     <main className="legal-main">
       <div className="legal-kicker">{page.eyebrow}</div>
       <h1>{page.title}</h1>
@@ -111,5 +107,5 @@ export default function LegalPage({ slug }: { slug: keyof typeof pages }) {
       <div className="legal-content">{page.sections.map((section) => <section key={section.heading}><h2>{section.heading}</h2>{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</section>)}</div>
     </main>
     <footer className="legal-footer"><a className="legal-wordmark" href="/"><span>THE ORBION</span><strong>SPACE LEXICON</strong></a><PolicyLinks /><p>© 2026 Anthony Galeano · Founder, Orbion</p></footer>
-  </div>;
+  </div></>;
 }

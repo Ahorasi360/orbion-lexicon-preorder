@@ -1,4 +1,4 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
+import { index, int, json, mediumtext, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -25,4 +25,133 @@ export const users = mysqlTable("users", {
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 
-// TODO: Add your tables here
+/** Public taxonomy for the Space Lexicon. */
+export const domains = mysqlTable(
+  "domains",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    slug: varchar("slug", { length: 128 }).notNull().unique(),
+    name: varchar("name", { length: 255 }).notNull(),
+    description: text("description").notNull(),
+    parentDomainId: int("parent_domain_id"),
+    relatedDomainIds: json("related_domain_ids").$type<number[]>().notNull(),
+    entryCount: int("entry_count").notNull().default(0),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [index("domains_parent_domain_id_idx").on(table.parentDomainId)],
+);
+
+/**
+ * Canonical public term records. Text is imported from the approved manuscript
+ * and remains review-gated until editorial, technical, and source review are complete.
+ */
+export const lexiconEntries = mysqlTable(
+  "lexicon_entries",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    orbionId: varchar("orbion_id", { length: 16 }).notNull().unique(),
+    slug: varchar("slug", { length: 192 }).notNull().unique(),
+    canonicalName: varchar("canonical_name", { length: 255 }).notNull(),
+    acronym: varchar("acronym", { length: 64 }),
+    aliases: json("aliases").$type<string[]>().notNull(),
+    shortDefinition: text("short_definition").notNull(),
+    fullDefinition: text("full_definition").notNull(),
+    whyItMatters: text("why_it_matters").notNull(),
+    industryExample: text("industry_example"),
+    dontConfuse: text("dont_confuse"),
+    connectedConcepts: json("connected_concepts").$type<string[]>().notNull(),
+    domainIds: json("domain_ids").$type<number[]>().notNull(),
+    relatedEntryIds: json("related_entry_ids").$type<number[]>().notNull(),
+    keyFacts: json("key_facts").$type<string[]>().notNull(),
+    visualAssets: json("visual_assets").$type<string[]>().notNull(),
+    primaryReferenceIds: json("primary_reference_ids").$type<string[]>().notNull(),
+    evidenceStrength: int("evidence_strength").notNull(),
+    reviewStatus: mysqlEnum("review_status", ["review_pending", "approved", "archived"])
+      .notNull()
+      .default("review_pending"),
+    bookReference: varchar("book_reference", { length: 128 }),
+    sourceText: mediumtext("source_text").notNull(),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [
+    index("lexicon_entries_canonical_name_idx").on(table.canonicalName),
+    index("lexicon_entries_review_status_idx").on(table.reviewStatus),
+  ],
+);
+
+/** Source records cited by entries, claims, and relationships. */
+export const sources = mysqlTable(
+  "sources",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    orbionId: varchar("orbion_id", { length: 16 }).notNull().unique(),
+    title: text("title").notNull(),
+    publisher: varchar("publisher", { length: 255 }),
+    author: varchar("author", { length: 255 }),
+    publicationDate: varchar("publication_date", { length: 32 }),
+    sourceType: varchar("source_type", { length: 64 }).notNull(),
+    locator: text("locator"),
+    rightsStatus: mysqlEnum("rights_status", ["approved_for_reference", "pending_review", "unknown"])
+      .notNull()
+      .default("pending_review"),
+    retrievedAt: timestamp("retrieved_at"),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [index("sources_source_type_idx").on(table.sourceType)],
+);
+
+/** Time-bounded assertions that can be reviewed without rewriting an entire entry. */
+export const claims = mysqlTable(
+  "claims",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    entryId: int("entry_id").notNull(),
+    text: text("text").notNull(),
+    status: mysqlEnum("status", ["draft", "active", "superseded", "retracted"])
+      .notNull()
+      .default("draft"),
+    validFrom: timestamp("valid_from"),
+    validTo: timestamp("valid_to"),
+    sourceIds: json("source_ids").$type<number[]>().notNull(),
+    reviewStatus: mysqlEnum("review_status", ["review_pending", "approved", "archived"])
+      .notNull()
+      .default("review_pending"),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [index("claims_entry_id_idx").on(table.entryId)],
+);
+
+/** Directed, reviewable connections between canonical Lexicon entries. */
+export const relations = mysqlTable(
+  "relations",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    subjectId: int("subject_id").notNull(),
+    predicate: varchar("predicate", { length: 128 }).notNull(),
+    objectId: int("object_id").notNull(),
+    validFrom: timestamp("valid_from"),
+    validTo: timestamp("valid_to"),
+    sourceIds: json("source_ids").$type<number[]>().notNull(),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [
+    index("relations_subject_id_idx").on(table.subjectId),
+    index("relations_object_id_idx").on(table.objectId),
+  ],
+);
+
+export type Domain = typeof domains.$inferSelect;
+export type InsertDomain = typeof domains.$inferInsert;
+export type LexiconEntry = typeof lexiconEntries.$inferSelect;
+export type InsertLexiconEntry = typeof lexiconEntries.$inferInsert;
+export type Source = typeof sources.$inferSelect;
+export type InsertSource = typeof sources.$inferInsert;
+export type Claim = typeof claims.$inferSelect;
+export type InsertClaim = typeof claims.$inferInsert;
+export type Relation = typeof relations.$inferSelect;
+export type InsertRelation = typeof relations.$inferInsert;

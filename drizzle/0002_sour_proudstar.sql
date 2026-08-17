@@ -1,0 +1,1 @@
+ALTER TABLE `lexicon_entries` MODIFY COLUMN `source_text` mediumtext NOT NULL;
