@@ -72,7 +72,7 @@ function writeToLogFile(source: LogSource, entries: unknown[]) {
  * Vite plugin to collect browser debug logs
  * - POST /__manus__/logs: Browser sends logs, written directly to files
  * - Files: browserConsole.log, networkRequests.log, sessionReplay.log
- * - Auto-trimmed when exceeding 1MB (keeps newest entries)
+ * - Auto-trimmed when exceeding size limit
  */
 function vitePluginManusDebugCollector(): Plugin {
   return {
@@ -167,19 +167,6 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (!id.includes("node_modules")) return undefined;
-          if (id.includes("react-dom") || id.includes("/react/") || id.includes("scheduler")) return "react-vendor";
-          if (id.includes("@tanstack")) return "query-vendor";
-          if (id.includes("@trpc") || id.includes("superjson")) return "trpc-vendor";
-          if (id.includes("lucide-react")) return "icons-vendor";
-          if (id.includes("@radix-ui") || id.includes("cmdk") || id.includes("sonner")) return "ui-vendor";
-          return "vendor";
-        },
-      },
-    },
   },
   server: {
     host: true,
