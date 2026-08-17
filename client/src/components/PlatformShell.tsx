@@ -4,7 +4,7 @@ import { Link, useLocation } from "wouter";
 import Seo, { routeMeta } from "@/components/Seo";
 
 const primaryLinks = [
-  { href: "/lexicon", label: "Explore" },
+  { href: "/", label: "Explore" },
   { href: "/lexicon", label: "Lexicon" },
   { href: "/domains", label: "Domains" },
   { href: "/maps", label: "Maps" },
@@ -29,6 +29,7 @@ export default function PlatformShell({ children }: { children: React.ReactNode 
             <small>ONLINE LEXICON</small>
           </Link>
           <nav className={`platform-nav ${mobileOpen ? "is-open" : ""}`} aria-label="Primary navigation">
+            <p className="mobile-nav-title">Explore Orbion</p>
             {primaryLinks.map(item => (
               <Link
                 key={item.label}
@@ -55,6 +56,7 @@ export default function PlatformShell({ children }: { children: React.ReactNode 
             onClick={() => setMobileOpen(open => !open)}
           >
             {mobileOpen ? <X size={21} /> : <Menu size={21} />}
+            <span>{mobileOpen ? "Close" : "Menu"}</span>
           </button>
         </div>
       </header>
