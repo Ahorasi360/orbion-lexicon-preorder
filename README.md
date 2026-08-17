@@ -80,6 +80,7 @@ Before changing any entry’s review status to `approved`, confirm final copy, t
 | `pnpm build` | Create the production frontend and backend bundles. |
 | `pnpm content:sitemap` | Regenerate the public sitemap from `data/lexicon-seed.json`. |
 | `pnpm qa:keyboard` | Run non-submitting keyboard, focus-visibility, overflow, and console QA across public and legal routes at desktop and mobile widths. |
+| `pnpm qa:book-links` | Run non-submitting desktop/mobile click-through QA for Book links, in-page CTAs, policy links, and runtime Stripe destinations. |
 | `pnpm drizzle-kit generate` | Generate a Drizzle migration after editing `drizzle/schema.ts`. |
 
 When changing the database schema, generate the migration, review its SQL, and apply it through the managed database migration workflow. Do not use destructive schema changes without an explicit data-impact review.

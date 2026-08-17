@@ -1,0 +1,242 @@
+{
+  "baseUrl": "http://127.0.0.1:3000",
+  "checkedAt": "2026-08-17T05:08:01.704Z",
+  "desktop": [
+    {
+      "label": "desktop header /",
+      "expectedPath": "/",
+      "actualPath": "/"
+    },
+    {
+      "label": "desktop footer /",
+      "expectedPath": "/",
+      "actualPath": "/"
+    },
+    {
+      "label": "desktop header /lexicon",
+      "expectedPath": "/lexicon",
+      "actualPath": "/lexicon"
+    },
+    {
+      "label": "desktop footer /lexicon",
+      "expectedPath": "/lexicon",
+      "actualPath": "/lexicon"
+    },
+    {
+      "label": "desktop header /domains",
+      "expectedPath": "/domains",
+      "actualPath": "/domains"
+    },
+    {
+      "label": "desktop footer /domains",
+      "expectedPath": "/domains",
+      "actualPath": "/domains"
+    },
+    {
+      "label": "desktop header /maps",
+      "expectedPath": "/maps",
+      "actualPath": "/maps"
+    },
+    {
+      "label": "desktop footer /maps",
+      "expectedPath": "/maps",
+      "actualPath": "/maps"
+    },
+    {
+      "label": "desktop header /methodology",
+      "expectedPath": "/methodology",
+      "actualPath": "/methodology"
+    },
+    {
+      "label": "desktop footer /methodology",
+      "expectedPath": "/methodology",
+      "actualPath": "/methodology"
+    },
+    {
+      "label": "desktop header /sources",
+      "expectedPath": "/sources",
+      "actualPath": "/sources"
+    },
+    {
+      "label": "desktop footer /sources",
+      "expectedPath": "/sources",
+      "actualPath": "/sources"
+    },
+    {
+      "label": "desktop header /about",
+      "expectedPath": "/about",
+      "actualPath": "/about"
+    },
+    {
+      "label": "desktop footer /about",
+      "expectedPath": "/about",
+      "actualPath": "/about"
+    },
+    {
+      "label": "desktop header /intelligence",
+      "expectedPath": "/intelligence",
+      "actualPath": "/intelligence"
+    },
+    {
+      "label": "desktop footer /intelligence",
+      "expectedPath": "/intelligence",
+      "actualPath": "/intelligence"
+    },
+    {
+      "label": "desktop policy /terms-of-sale",
+      "expectedPath": "/terms-of-sale",
+      "actualPath": "/terms-of-sale"
+    },
+    {
+      "label": "desktop policy /preorder-refund-policy",
+      "expectedPath": "/preorder-refund-policy",
+      "actualPath": "/preorder-refund-policy"
+    },
+    {
+      "label": "desktop policy /shipping-delay-policy",
+      "expectedPath": "/shipping-delay-policy",
+      "actualPath": "/shipping-delay-policy"
+    },
+    {
+      "label": "desktop policy /privacy-policy",
+      "expectedPath": "/privacy-policy",
+      "actualPath": "/privacy-policy"
+    },
+    {
+      "label": "desktop policy /contact",
+      "expectedPath": "/contact",
+      "actualPath": "/contact"
+    },
+    {
+      "label": "desktop policy /corrections",
+      "expectedPath": "/corrections",
+      "actualPath": "/corrections"
+    },
+    {
+      "label": "desktop preview control",
+      "previewPosition": 169.53125
+    },
+    {
+      "label": "desktop preorder control",
+      "preorderPosition": 175.53125
+    }
+  ],
+  "mobile": [
+    {
+      "expectedPath": "/",
+      "actualPath": "/"
+    },
+    {
+      "expectedPath": "/lexicon",
+      "actualPath": "/lexicon"
+    },
+    {
+      "expectedPath": "/domains",
+      "actualPath": "/domains"
+    },
+    {
+      "expectedPath": "/maps",
+      "actualPath": "/maps"
+    },
+    {
+      "expectedPath": "/methodology",
+      "actualPath": "/methodology"
+    },
+    {
+      "expectedPath": "/sources",
+      "actualPath": "/sources"
+    },
+    {
+      "expectedPath": "/about",
+      "actualPath": "/about"
+    },
+    {
+      "expectedPath": "/intelligence",
+      "actualPath": "/intelligence"
+    },
+    {
+      "label": "mobile footer /",
+      "expectedPath": "/",
+      "actualPath": "/"
+    },
+    {
+      "label": "mobile footer /lexicon",
+      "expectedPath": "/lexicon",
+      "actualPath": "/lexicon"
+    },
+    {
+      "label": "mobile footer /domains",
+      "expectedPath": "/domains",
+      "actualPath": "/domains"
+    },
+    {
+      "label": "mobile footer /maps",
+      "expectedPath": "/maps",
+      "actualPath": "/maps"
+    },
+    {
+      "label": "mobile footer /methodology",
+      "expectedPath": "/methodology",
+      "actualPath": "/methodology"
+    },
+    {
+      "label": "mobile footer /sources",
+      "expectedPath": "/sources",
+      "actualPath": "/sources"
+    },
+    {
+      "label": "mobile footer /about",
+      "expectedPath": "/about",
+      "actualPath": "/about"
+    },
+    {
+      "label": "mobile footer /intelligence",
+      "expectedPath": "/intelligence",
+      "actualPath": "/intelligence"
+    },
+    {
+      "label": "mobile policy /terms-of-sale",
+      "expectedPath": "/terms-of-sale",
+      "actualPath": "/terms-of-sale"
+    },
+    {
+      "label": "mobile policy /preorder-refund-policy",
+      "expectedPath": "/preorder-refund-policy",
+      "actualPath": "/preorder-refund-policy"
+    },
+    {
+      "label": "mobile policy /shipping-delay-policy",
+      "expectedPath": "/shipping-delay-policy",
+      "actualPath": "/shipping-delay-policy"
+    },
+    {
+      "label": "mobile policy /privacy-policy",
+      "expectedPath": "/privacy-policy",
+      "actualPath": "/privacy-policy"
+    },
+    {
+      "label": "mobile policy /contact",
+      "expectedPath": "/contact",
+      "actualPath": "/contact"
+    },
+    {
+      "label": "mobile policy /corrections",
+      "expectedPath": "/corrections",
+      "actualPath": "/corrections"
+    },
+    {
+      "label": "mobile preview control",
+      "previewPosition": 176.765625
+    },
+    {
+      "label": "mobile preorder control",
+      "preorderPosition": 167.609375
+    }
+  ],
+  "checkoutUrls": [
+    "https://buy.stripe.com/5kQ28lbNl1lL8bXehXbEA0c",
+    "https://buy.stripe.com/aFa00d5oX5C1csdfm1bEA0d",
+    "https://buy.stripe.com/6oU14h6t1c0p4ZL8XDbEA0e"
+  ],
+  "failures": []
+}

@@ -25,4 +25,12 @@ describe("public-platform accessibility safeguards", () => {
     expect(preorder).toContain('autoComplete="email"');
     expect(preorder).toContain('aria-label="Toggle navigation"');
   });
+
+  it("keeps all core platform destinations available from the Book route", () => {
+    for (const href of ["/", "/lexicon", "/domains", "/maps", "/methodology", "/sources", "/about", "/intelligence"]) {
+      expect(preorder).toContain(`href="${href}"`);
+    }
+    expect(preorder).toContain("Preorder the book");
+    expect(preorder).toContain("Join the preorder list");
+  });
 });

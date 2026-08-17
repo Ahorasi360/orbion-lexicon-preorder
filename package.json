@@ -12,7 +12,8 @@
     "test": "vitest run",
     "db:push": "drizzle-kit generate && drizzle-kit migrate",
     "content:sitemap": "node scripts/generate-sitemap.mjs",
-    "qa:keyboard": "node scripts/keyboard-qa.mjs"
+    "qa:keyboard": "node scripts/keyboard-qa.mjs",
+    "qa:book-links": "node scripts/book-link-qa.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.693.0",

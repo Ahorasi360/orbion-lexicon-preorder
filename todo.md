@@ -83,3 +83,7 @@
 - [x] Update the project README with architecture, content import, deployment, preserved preorder, and future Intelligence handoff guidance
 - [x] Complete documented keyboard-focus and all-route desktop/mobile QA, including legal routes and overflow checks
 - [x] Further split heavy vendor code to reduce the initial main client bundle and clear the build-size warning
+- [x] Restore and verify all visible `/book` navigation, legal, preview, preorder-list, and edition checkout links after the platform route migration
+- [x] Click-test every visible desktop and mobile `/book` navigation, footer, policy, preview, and preorder-list link
+- [x] Re-verify all three `/book` checkout controls resolve through the runtime checkout procedure without opening or submitting checkout
+- [x] Click-test mobile `/book` footer and policy links plus mobile preview and preorder-list controls, then record the extended regression result
