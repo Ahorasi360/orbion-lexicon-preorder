@@ -1,18 +1,21 @@
 {
   "buildCommand": "pnpm build",
   "outputDirectory": "dist/public",
-  "rewrites": [
+  "routes": [
     {
-      "source": "/api/trpc/:path*",
-      "destination": "https://orbionlexi-4xh5csx5.manus.space/api/trpc/:path*"
+      "handle": "filesystem"
     },
     {
-      "source": "/manus-storage/:path*",
-      "destination": "https://orbionlexi-4xh5csx5.manus.space/manus-storage/:path*"
+      "src": "/api/trpc/(.*)",
+      "dest": "https://orbionlexi-4xh5csx5.manus.space/api/trpc/$1"
     },
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "/manus-storage/(.*)",
+      "dest": "https://orbionlexi-4xh5csx5.manus.space/manus-storage/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }

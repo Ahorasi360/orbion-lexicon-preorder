@@ -19,6 +19,7 @@ const rendered = await page.evaluate(() => ({
   rootText: document.getElementById("root")?.innerText || "",
   rootChildCount: document.getElementById("root")?.childElementCount || 0,
   bodyText: document.body.innerText.slice(0, 500),
+  resources: performance.getEntriesByType("resource").map(entry => entry.name),
 }));
 await browser.close();
 const result = { url, checkedAt: new Date().toISOString(), consoleErrors, failedRequests, rendered };
