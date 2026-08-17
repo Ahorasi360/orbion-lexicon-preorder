@@ -15,7 +15,7 @@ const listInput = z.object({
   letter: z.string().trim().min(1).max(1).optional(),
   query: z.string().trim().min(1).max(120).optional(),
   acronymOnly: z.boolean().optional(),
-  limit: z.number().int().min(1).max(100).default(48),
+  limit: z.number().int().min(1).max(500).default(48),
 });
 
 const searchInput = z.object({

@@ -6,6 +6,7 @@ export type LexiconCardEntry = {
   slug: string;
   canonicalName: string;
   acronym: string | null;
+  aliases: string[];
   shortDefinition: string;
   evidenceStrength: number;
   reviewStatus: string;

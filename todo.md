@@ -87,7 +87,11 @@
 - [x] Click-test every visible desktop and mobile `/book` navigation, footer, policy, preview, and preorder-list link
 - [x] Re-verify all three `/book` checkout controls resolve through the runtime checkout procedure without opening or submitting checkout
 - [x] Click-test mobile `/book` footer and policy links plus mobile preview and preorder-list controls, then record the extended regression result
-- [ ] Push the repaired `/book` release to the GitHub-backed production site and verify its live navigation links
-- [ ] Fix the live Vercel SPA fallback so `/book` and other public client routes do not return 404 after deployment
-- [ ] Diagnose and fix the live Vercel client-render issue if the published `/book` page remains blank after route fallback resolves
-- [ ] Eliminate the user-confirmed live Vercel blank screen and verify visible homepage and Book-route content in a real browser
+- [x] Push the repaired `/book` release to the GitHub-backed production site and verify its live navigation links
+- [x] Fix the live Vercel SPA fallback so `/book` and other public client routes do not return 404 after deployment
+- [x] Diagnose and fix the live Vercel client-render issue if the published `/book` page remains blank after route fallback resolves
+- [x] Eliminate the user-confirmed live Vercel blank screen and verify visible homepage and Book-route content in a real browser
+- [x] Verify direct-entry live Vercel rendering for representative Lexicon, domain, map, source, and policy SPA routes after the routing fix
+- [x] Improve mobile Lexicon navigation clarity and touch-target hierarchy
+- [x] Repair mobile A–Z filter interactions so each letter visibly filters the Lexicon list
+- [x] Repair mobile Lexicon search input and results behavior, including clear feedback for active queries
