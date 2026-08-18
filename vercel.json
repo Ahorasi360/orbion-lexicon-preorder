@@ -10,6 +10,10 @@
       "dest": "https://orbionlexi-4xh5csx5.manus.space/api/trpc/$1"
     },
     {
+      "src": "/api/stripe/online-lexicon-webhook",
+      "dest": "https://orbionlexi-4xh5csx5.manus.space/api/stripe/online-lexicon-webhook"
+    },
+    {
       "src": "/manus-storage/(.*)",
       "dest": "https://orbionlexi-4xh5csx5.manus.space/manus-storage/$1"
     },

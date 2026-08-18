@@ -36,6 +36,20 @@
       "when": 1787015228496,
       "tag": "0004_dazzling_talisman",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1787018214343,
+      "tag": "0005_yielding_tiger_shark",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1787022795305,
+      "tag": "0006_reflective_texas_twister",
+      "breakpoints": true
     }
   ]
 }

@@ -99,7 +99,7 @@
 - [ ] Preserve the existing physical book products, prices, checkout routes, analytics, visual identity, and preorder policies without bundling digital access
 - [x] Add a configurable, server-authorized public-preview flag and catalog-safe teaser fields for approved Online Lexicon entries
 - [x] Add centralized user entitlement, purchase, and fixed-term access records for the separately sold Online Lexicon
-- [ ] Add member account, sign-in/out, protected full-entry access, and account entitlement status views using existing authentication infrastructure
+- [x] Add member account, sign-in/out, protected full-entry access, and account entitlement status views using existing authentication infrastructure
 - [ ] Add a distinct configurable Online Lexicon access product flow without displaying an unapproved price or enabling automatic renewal
 - [ ] Build locked catalog, search-preview, member upgrade, and premium full-entry experiences without exposing paid content to public APIs or client bundles
 - [ ] Add approved final-sale disclosures for digital access and lawful preorder exceptions to existing legal and purchase surfaces
@@ -108,3 +108,16 @@
 - [x] Add public catalog-only query contracts that never read or serialize premium Lexicon fields for unauthenticated visitors
 - [x] Add separate owner-approved public-preview excerpt fields so sample pages never reuse premium manuscript definition fields
 - [ ] Add logged-out API leak regression tests for locked and preview entries, search, sources, and related content responses
+- [x] Add a protected `/account` experience using the existing OAuth identity, showing access status, expiration, purchases, and sign-out
+- [x] Add a centralized account/entitlement router with authenticated status queries and access-denied regression coverage
+- [x] Add a separately configurable Stripe Online Lexicon product, access duration, and post-purchase return URLs without editing physical-book payment links
+- [x] Create server-side payment verification and idempotent webhook processing that grants or revokes only Online Lexicon entitlements
+- [x] Add a payment-status return view that never grants access based solely on the browser success URL
+- [x] Configure the provided $79 one-year Online Lexicon Stripe payment link as a separate digital-access product, never as a physical-book bundle
+- [x] State that future Online Lexicon access pricing may change at Orbion’s discretion while preserving the price shown for each completed digital purchase
+- [x] Reconcile annual Payment Link checkouts with opaque server-created reference tokens, without exposing user identity or requiring a public Payment Link ID
+- [x] Verify the webhook session’s Stripe Payment Link identity against the configured annual access link before granting an entitlement
+- [ ] Restrict the Online Lexicon Stripe webhook destination to the minimum required `checkout.session.completed` and `charge.refunded` events
+- [ ] Configure and verify the annual Payment Link post-purchase redirect to `/lexicon/access/success`, including regression coverage
+- [ ] Harden Online Lexicon webhook idempotency so duplicate or concurrent Stripe deliveries cannot reprocess a purchase, including repeated-event tests
+- [x] Correct route precedence so Online Lexicon access and payment-status paths resolve before dynamic `/lexicon/:term` entries
