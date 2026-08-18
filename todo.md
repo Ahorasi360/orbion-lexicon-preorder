@@ -134,3 +134,12 @@
 - [x] Add logged-out API leak regression tests for locked and preview entries, search, sources, and related content responses
 - [x] Update robots and AI-crawler guidance to exclude locked/member-only Lexicon content while allowing only owner-approved public preview pages to be discoverable
 - [x] Add regression coverage for protected crawler directives and restricted sitemap content
+- [x] Run the final local route, authorization, locked-content, accessibility, checkout-safe, and browser-console QA matrix
+- [x] Eliminate or isolate the remaining managed-preview Vite WebSocket console noise from the browser session used for QA
+- [x] Run one single-session fresh-browser QA audit that records routes, locked content, account denial, checkout-safe controls, accessibility, and a clean console result together
+- [x] Document the fresh-browser QA logging isolation so stale preview tabs cannot contaminate release-console evidence
+- [x] Make the release QA script self-contained by resetting and checking its own managed-preview console capture
+- [x] Re-run one explicit single-command fresh-browser QA audit with routes, locked content, account denial, checkout-safe controls, accessibility, and console cleanliness
+- [x] Filter the known managed-preview Vite HMR fallback error from debug collection while preserving all application and network error reporting
+- [ ] Verify the live Vercel production site after the paid-access release, including Book preservation and protected route behavior
+- [x] Investigate and fix the unexpected mobile `/lexicon` render anomaly observed during the final visual QA capture

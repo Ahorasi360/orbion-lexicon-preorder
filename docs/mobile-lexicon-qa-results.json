@@ -1,6 +1,6 @@
 {
-  "baseUrl": "https://orbion-lexicon-preorder-seven.vercel.app",
-  "checkedAt": "2026-08-18T00:51:26.652Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "checkedAt": "2026-08-18T08:03:14.470Z",
   "initialCards": 500,
   "menuVisible": true,
   "letterCards": 24,
