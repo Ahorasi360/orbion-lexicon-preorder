@@ -53,7 +53,7 @@ export default function PlatformHome() {
         <div className="platform-container stat-rail">
           <div><strong>{summary?.entryCount ?? "500"}</strong><span>essential concepts</span></div>
           <div><strong>{summary?.domainCount ?? "20"}</strong><span>connected domains</span></div>
-          <div><strong>{summary?.sourceCount ?? "—"}</strong><span>source records</span></div>
+          <div><strong>{summary?.previewEntryCount ?? "—"}</strong><span>public sample entries</span></div>
           <div><strong>1</strong><span>shared vocabulary</span></div>
         </div>
       </section>

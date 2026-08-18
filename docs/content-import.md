@@ -25,3 +25,18 @@ The importer upserts domains, cited source records, and entries by their stable 
 ## Editorial Safeguards
 
 The supplied first-edition manuscript identifies itself as a review manuscript rather than publication-final copy. The importer therefore preserves `review_pending` as the default status. Before changing a public entry to `approved`, confirm the final copy, technical review, legal/regulatory review where applicable, source verification, and stable permanent slug.
+
+## Paid Access and Public Preview Controls
+
+All 500 imported entries are **premium by default**. The import does not infer public-preview status from `short_definition`, `full_definition`, `source_text`, related concepts, sources, or any other manuscript field. Public catalog APIs return only canonical identity, aliases, domain membership, and an explicitly authored `public_teaser` when one is present.
+
+To publish an approved sample, an owner or editor must set all of the following on that exact canonical entry after review:
+
+| Field | Required value | Purpose |
+|---|---|---|
+| `public_teaser` | Owner-approved concise copy | The only entry prose returned to public catalog/search clients. |
+| `is_public_preview` | `true` | Allows the approved full entry to render publicly. |
+| `index_status` | `index` only when the sample should appear in search | Keeps locked entries out of public term indexing. |
+| `seo_title` / `seo_description` | Optional owner-approved public metadata | Overrides derived metadata without drawing from premium text. |
+
+Do not enable a preview by copying content from a manuscript paragraph unless that exact public excerpt has been editorially approved. Locked entries remain discoverable as catalog records but their full definitions, sources, relationships, visual assets, and evidence fields are returned only after the server confirms a current paid entitlement.

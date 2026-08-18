@@ -95,3 +95,16 @@
 - [x] Improve mobile Lexicon navigation clarity and touch-target hierarchy
 - [x] Repair mobile A–Z filter interactions so each letter visibly filters the Lexicon list
 - [x] Repair mobile Lexicon search input and results behavior, including clear feedback for active queries
+- [x] Audit current production pages, book checkout flows, auth/database infrastructure, SEO assets, and baseline behavior before additive paid-access work
+- [ ] Preserve the existing physical book products, prices, checkout routes, analytics, visual identity, and preorder policies without bundling digital access
+- [x] Add a configurable, server-authorized public-preview flag and catalog-safe teaser fields for approved Online Lexicon entries
+- [x] Add centralized user entitlement, purchase, and fixed-term access records for the separately sold Online Lexicon
+- [ ] Add member account, sign-in/out, protected full-entry access, and account entitlement status views using existing authentication infrastructure
+- [ ] Add a distinct configurable Online Lexicon access product flow without displaying an unapproved price or enabling automatic renewal
+- [ ] Build locked catalog, search-preview, member upgrade, and premium full-entry experiences without exposing paid content to public APIs or client bundles
+- [ ] Add approved final-sale disclosures for digital access and lawful preorder exceptions to existing legal and purchase surfaces
+- [ ] Extend paid-access SEO, AI discovery, XML sitemap, analytics, security, and authorization test coverage without indexing protected content
+- [x] Add explicit preview-safe entry fields and normalized Online Lexicon purchase, entitlement, and webhook-event tables through an applied Drizzle migration
+- [x] Add public catalog-only query contracts that never read or serialize premium Lexicon fields for unauthenticated visitors
+- [x] Add separate owner-approved public-preview excerpt fields so sample pages never reuse premium manuscript definition fields
+- [ ] Add logged-out API leak regression tests for locked and preview entries, search, sources, and related content responses
