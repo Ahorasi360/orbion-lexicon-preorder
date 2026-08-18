@@ -14,6 +14,7 @@ export default function PlatformHome() {
   const { data: featured } = trpc.lexicon.list.useQuery(FEATURED_INPUT);
   const { data: domains } = trpc.lexicon.domains.useQuery();
   const selectedDomains = useMemo(() => (domains ?? []).slice(0, 6) as LexiconDomain[], [domains]);
+  const previewCount = summary?.previewEntryCount ?? 0;
 
   const submitSearch = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -48,12 +49,12 @@ export default function PlatformHome() {
       <section className="platform-intro section-light">
         <div className="platform-container split-intro">
           <div><p className="platform-kicker on-light">A FIELD GUIDE FOR THE MODERN SPACE INDUSTRY</p><h2>Start with a term. <em>See the system.</em></h2></div>
-          <div><p>The physical book provides a structured foundation. The Online Lexicon extends it through exploration, sources, and connected concepts—without making the complexity feel abstract.</p><Link href="/methodology" className="text-arrow-link">How Orbion approaches evidence <ArrowRight size={15} /></Link></div>
+          <div><p>The physical book provides a structured foundation. The Online Lexicon extends it through search, member evidence, and connected concepts—without making the complexity feel abstract. Public samples are released only after owner approval.</p><Link href="/methodology" className="text-arrow-link">How Orbion approaches evidence <ArrowRight size={15} /></Link></div>
         </div>
         <div className="platform-container stat-rail">
           <div><strong>{summary?.entryCount ?? "500"}</strong><span>essential concepts</span></div>
           <div><strong>{summary?.domainCount ?? "20"}</strong><span>connected domains</span></div>
-          <div><strong>{summary?.previewEntryCount ?? "—"}</strong><span>public sample entries</span></div>
+          <div><strong>{previewCount}</strong><span>{previewCount === 0 ? "owner-approved samples" : "public sample entries"}</span></div>
           <div><strong>1</strong><span>shared vocabulary</span></div>
         </div>
       </section>
@@ -71,7 +72,7 @@ export default function PlatformHome() {
       <section className="platform-section connection-section">
         <div className="platform-container connection-grid">
           <div className="connection-graphic" aria-hidden="true"><Network size={58} strokeWidth={1} /><span className="connection-dot dot-a" /><span className="connection-dot dot-b" /><span className="connection-dot dot-c" /></div>
-          <div><p className="platform-kicker">THE ORBION WAYFINDING PATH</p><h2>Build understanding <em>one connection at a time.</em></h2><ol className="connection-path"><li><span>01</span><div><strong>Term</strong><p>Find a precise definition in plain language.</p></div></li><li><span>02</span><div><strong>Context</strong><p>Understand why it matters to real missions and systems.</p></div></li><li><span>03</span><div><strong>Connection</strong><p>Follow related concepts into a domain or map.</p></div></li></ol></div>
+          <div><p className="platform-kicker">THE ORBION WAYFINDING PATH</p><h2>Build understanding <em>one connection at a time.</em></h2><ol className="connection-path"><li><span>01</span><div><strong>Catalog</strong><p>Search public names, aliases, acronyms, and domains.</p></div></li><li><span>02</span><div><strong>Member context</strong><p>Unlock full explanations, evidence, and real mission relevance.</p></div></li><li><span>03</span><div><strong>Connection</strong><p>Follow related concepts into a domain or map.</p></div></li></ol></div>
         </div>
       </section>
 

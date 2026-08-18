@@ -27,14 +27,20 @@ describe("public search and crawler assets", () => {
     expect(html).toContain('"price":"89.00"');
   });
 
-  it("provides crawl directives and a sitemap for every public policy route", () => {
+  it("provides crawl directives and a sitemap for public policy routes while excluding locked premium terms", () => {
     const robots = readFileSync(resolve(root, "client/public/robots.txt"), "utf8");
     const sitemap = readFileSync(resolve(root, "client/public/sitemap.xml"), "utf8");
+    const llms = readFileSync(resolve(root, "client/public/llms.txt"), "utf8");
     const legalPage = readFileSync(resolve(root, "client/src/pages/LegalPage.tsx"), "utf8");
     expect(robots).toContain("Sitemap: https://orbionlexicon.com/sitemap.xml");
     expect(robots).toContain("User-agent: GPTBot");
     expect(sitemap).toContain("https://orbionlexicon.com/book");
-    expect(sitemap).toContain("https://orbionlexicon.com/lexicon/spaceflight");
+    expect(sitemap).not.toContain("https://orbionlexicon.com/lexicon/spaceflight");
+    expect(sitemap).not.toContain("https://orbionlexicon.com/sources");
+    expect(robots).toContain("Disallow: /account");
+    expect(robots).toContain("Disallow: /lexicon/access");
+    expect(llms).toContain("Only owner-approved public preview entries");
+    expect(llms).toContain("source records, evidence notes");
     expect(sitemap).toContain("https://orbionlexicon.com/preorder-refund-policy");
     expect(sitemap).toContain("https://orbionlexicon.com/corrections");
     expect(legalPage).toContain('href="/book#preorder"');

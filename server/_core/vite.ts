@@ -9,7 +9,10 @@ import viteConfig from "../../vite.config";
 export async function setupVite(app: Express, server: Server) {
   const serverOptions = {
     middlewareMode: true,
-    hmr: { server },
+    // The managed preview proxy serves HTTP correctly but does not proxy Vite's
+    // websocket upgrade reliably. Disable HMR there rather than emit a browser
+    // console error; normal navigation and production assets are unaffected.
+    hmr: false,
     allowedHosts: true as const,
   };
 
@@ -39,7 +42,11 @@ export async function setupVite(app: Express, server: Server) {
         `src="/src/main.tsx?v=${nanoid()}"`
       );
       const page = await vite.transformIndexHtml(url, template);
-      res.status(200).set({ "Content-Type": "text/html" }).end(page);
+      // The managed preview proxy does not support Vite's HMR websocket upgrade.
+      // Modules remain transformed by Vite, but omit the client bootstrap so users
+      // see a stable preview rather than a non-functional websocket console error.
+      const previewPage = page.replace(/<script type="module" src="\/@vite\/client"><\/script>/, "");
+      res.status(200).set({ "Content-Type": "text/html" }).end(previewPage);
     } catch (e) {
       vite.ssrFixStacktrace(e as Error);
       next(e);

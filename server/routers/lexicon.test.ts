@@ -55,7 +55,7 @@ describe("Lexicon search helpers", () => {
     expect(preview).not.toHaveProperty("whyItMatters");
     expect(preview.preview).toEqual({
       definition: "Approved public sample only.",
-      whyItMatters: "Approved public context only.",
+      context: "Approved public context only.",
       relatedSlugs: ["related-sample"],
     });
   });

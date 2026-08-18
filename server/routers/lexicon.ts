@@ -89,6 +89,7 @@ export function catalogEntry(entry: CatalogEntry, domainsById: Map<number, Domai
     aliases: normalizeStringArray(entry.aliases),
     publicTeaser: catalogTeaser(entry),
     isPublicPreview: entry.isPublicPreview,
+    indexStatus: entry.indexStatus,
     isLocked: !entry.isPublicPreview,
     reviewStatus: entry.reviewStatus,
     domains: domainIds.map(id => domainsById.get(id)).filter(Boolean).map(domain => ({
@@ -111,7 +112,7 @@ export function publicPreviewEntryPayload(entry: CatalogEntry, domainsById: Map<
     isLocked: false,
     preview: {
       definition: entry.publicPreviewDefinition,
-      whyItMatters: entry.publicPreviewWhyItMatters,
+      context: entry.publicPreviewWhyItMatters,
       relatedSlugs,
     },
   };

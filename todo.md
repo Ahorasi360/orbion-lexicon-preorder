@@ -101,13 +101,13 @@
 - [x] Add centralized user entitlement, purchase, and fixed-term access records for the separately sold Online Lexicon
 - [x] Add member account, sign-in/out, protected full-entry access, and account entitlement status views using existing authentication infrastructure
 - [ ] Add a distinct configurable Online Lexicon access product flow without displaying an unapproved price or enabling automatic renewal
-- [ ] Build locked catalog, search-preview, member upgrade, and premium full-entry experiences without exposing paid content to public APIs or client bundles
-- [ ] Add approved final-sale disclosures for digital access and lawful preorder exceptions to existing legal and purchase surfaces
-- [ ] Extend paid-access SEO, AI discovery, XML sitemap, analytics, security, and authorization test coverage without indexing protected content
+- [x] Build locked catalog, search-preview, member upgrade, and premium full-entry experiences without exposing paid content to public APIs or client bundles
+- [x] Add approved final-sale disclosures for digital access and lawful preorder exceptions to existing legal and purchase surfaces
+- [x] Extend paid-access SEO, AI discovery, XML sitemap, analytics, security, and authorization test coverage without indexing protected content
 - [x] Add explicit preview-safe entry fields and normalized Online Lexicon purchase, entitlement, and webhook-event tables through an applied Drizzle migration
 - [x] Add public catalog-only query contracts that never read or serialize premium Lexicon fields for unauthenticated visitors
 - [x] Add separate owner-approved public-preview excerpt fields so sample pages never reuse premium manuscript definition fields
-- [ ] Add logged-out API leak regression tests for locked and preview entries, search, sources, and related content responses
+- [x] Add logged-out API leak regression tests for locked and preview entries, search, sources, and related content responses
 - [x] Add a protected `/account` experience using the existing OAuth identity, showing access status, expiration, purchases, and sign-out
 - [x] Add a centralized account/entitlement router with authenticated status queries and access-denied regression coverage
 - [x] Add a separately configurable Stripe Online Lexicon product, access duration, and post-purchase return URLs without editing physical-book payment links
@@ -122,4 +122,15 @@
 - [ ] Recheck the Stripe dashboard endpoint subscription immediately before production launch and record the result
 - [ ] Configure and verify the annual Payment Link post-purchase redirect to `/lexicon/access/success`, including regression coverage
 - [ ] Harden Online Lexicon webhook idempotency so duplicate or concurrent Stripe deliveries cannot reprocess a purchase, including repeated-event tests
+- [x] Add a clear $79 annual-access upgrade surface to locked Lexicon cards, search results, sources, and individual terms without moving or bundling book commerce
+- [x] Add the member-unlocked entry presentation and a clear locked-entry explanation with server-driven entitlement status
+- [x] Keep the public preview empty until the owner explicitly approves one to five separate preview excerpts, then provide a documented activation workflow
+- [x] Fix the development preview HMR/WebSocket connection error reported on `/book?from_webdev=1` without affecting production routing
 - [x] Correct route precedence so Online Lexicon access and payment-status paths resolve before dynamic `/lexicon/:term` entries
+- [x] Add a clear Online Lexicon digital-access disclosure to Terms of Sale, preserving book preorder terms and lawful customer rights
+- [x] Apply no-index handling to locked terms, access, account, and payment-status routes; index only owner-approved public preview entries
+- [x] Regenerate the XML sitemap so it excludes locked term URLs and includes only approved public preview pages
+- [x] Add annual-access analytics events for access-page views, authenticated checkout starts, payment-status views, and locked-entry conversions
+- [x] Add logged-out API leak regression tests for locked and preview entries, search, sources, and related content responses
+- [x] Update robots and AI-crawler guidance to exclude locked/member-only Lexicon content while allowing only owner-approved public preview pages to be discoverable
+- [x] Add regression coverage for protected crawler directives and restricted sitemap content
