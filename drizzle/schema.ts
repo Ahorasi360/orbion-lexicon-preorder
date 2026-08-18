@@ -1,4 +1,4 @@
-import { index, int, json, mediumtext, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
+import { boolean, index, int, json, mediumtext, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -56,6 +56,17 @@ export const lexiconEntries = mysqlTable(
     acronym: varchar("acronym", { length: 64 }),
     aliases: json("aliases").$type<string[]>().notNull(),
     shortDefinition: text("short_definition").notNull(),
+    /** Explicitly authored catalog teaser; never derived from premium manuscript text. */
+    publicTeaser: text("public_teaser"),
+    /** Full text is public only after an owner marks this specific entry as a preview sample. */
+    isPublicPreview: boolean("is_public_preview").notNull().default(false),
+    /** Owner-approved sample copy, stored separately from the complete premium definition. */
+    publicPreviewDefinition: text("public_preview_definition"),
+    publicPreviewWhyItMatters: text("public_preview_why_it_matters"),
+    publicPreviewRelatedSlugs: json("public_preview_related_slugs").$type<string[]>().notNull(),
+    seoTitle: varchar("seo_title", { length: 255 }),
+    seoDescription: text("seo_description"),
+    indexStatus: mysqlEnum("index_status", ["index", "noindex"]).notNull().default("noindex"),
     fullDefinition: text("full_definition").notNull(),
     whyItMatters: text("why_it_matters").notNull(),
     industryExample: text("industry_example"),
@@ -79,6 +90,68 @@ export const lexiconEntries = mysqlTable(
     index("lexicon_entries_canonical_name_idx").on(table.canonicalName),
     index("lexicon_entries_review_status_idx").on(table.reviewStatus),
   ],
+);
+
+/** A separate digital-access purchase record. It never represents a physical book order. */
+export const lexiconPurchases = mysqlTable(
+  "lexicon_purchases",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    userId: int("user_id").notNull(),
+    productKey: varchar("product_key", { length: 96 }).notNull().default("online_lexicon_access"),
+    provider: mysqlEnum("provider", ["stripe"]).notNull().default("stripe"),
+    providerCheckoutSessionId: varchar("provider_checkout_session_id", { length: 255 }).unique(),
+    providerPaymentIntentId: varchar("provider_payment_intent_id", { length: 255 }),
+    status: mysqlEnum("status", ["pending", "paid", "failed", "refunded", "reversed", "expired"]).notNull().default("pending"),
+    currency: varchar("currency", { length: 12 }),
+    amountCents: int("amount_cents"),
+    accessDurationDays: int("access_duration_days").notNull(),
+    accessStartsAt: timestamp("access_starts_at"),
+    accessEndsAt: timestamp("access_ends_at"),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [
+    index("lexicon_purchases_user_id_idx").on(table.userId),
+    index("lexicon_purchases_status_idx").on(table.status),
+  ],
+);
+
+/** Centralized permission records checked before any premium Lexicon fields are retrieved. */
+export const lexiconEntitlements = mysqlTable(
+  "lexicon_entitlements",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    userId: int("user_id").notNull(),
+    purchaseId: int("purchase_id"),
+    productKey: varchar("product_key", { length: 96 }).notNull().default("online_lexicon_access"),
+    status: mysqlEnum("status", ["active", "expired", "revoked"]).notNull().default("active"),
+    startsAt: timestamp("starts_at").notNull(),
+    endsAt: timestamp("ends_at").notNull(),
+    revokedAt: timestamp("revoked_at"),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [
+    index("lexicon_entitlements_user_id_idx").on(table.userId),
+    index("lexicon_entitlements_active_window_idx").on(table.userId, table.status, table.endsAt),
+  ],
+);
+
+/** Idempotency ledger for verified payment-provider events; secrets and raw credentials are never persisted. */
+export const lexiconPaymentWebhookEvents = mysqlTable(
+  "lexicon_payment_webhook_events",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    provider: mysqlEnum("provider", ["stripe"]).notNull().default("stripe"),
+    providerEventId: varchar("provider_event_id", { length: 255 }).notNull().unique(),
+    eventType: varchar("event_type", { length: 128 }).notNull(),
+    payloadHash: varchar("payload_hash", { length: 128 }),
+    processingStatus: mysqlEnum("processing_status", ["processed", "ignored", "failed"]).notNull(),
+    processedAt: timestamp("processed_at").defaultNow().notNull(),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+  },
+  table => [index("lexicon_payment_webhook_events_type_idx").on(table.eventType)],
 );
 
 /** Source records cited by entries, claims, and relationships. */
@@ -149,6 +222,12 @@ export type Domain = typeof domains.$inferSelect;
 export type InsertDomain = typeof domains.$inferInsert;
 export type LexiconEntry = typeof lexiconEntries.$inferSelect;
 export type InsertLexiconEntry = typeof lexiconEntries.$inferInsert;
+export type LexiconPurchase = typeof lexiconPurchases.$inferSelect;
+export type InsertLexiconPurchase = typeof lexiconPurchases.$inferInsert;
+export type LexiconEntitlement = typeof lexiconEntitlements.$inferSelect;
+export type InsertLexiconEntitlement = typeof lexiconEntitlements.$inferInsert;
+export type LexiconPaymentWebhookEvent = typeof lexiconPaymentWebhookEvents.$inferSelect;
+export type InsertLexiconPaymentWebhookEvent = typeof lexiconPaymentWebhookEvents.$inferInsert;
 export type Source = typeof sources.$inferSelect;
 export type InsertSource = typeof sources.$inferInsert;
 export type Claim = typeof claims.$inferSelect;

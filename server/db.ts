@@ -1,6 +1,14 @@
-import { asc, eq, inArray } from "drizzle-orm";
+import { and, asc, desc, eq, gt, inArray } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, lexiconEntries, sources, users, domains } from "../drizzle/schema";
+import {
+  InsertUser,
+  lexiconEntitlements,
+  lexiconEntries,
+  lexiconPurchases,
+  sources,
+  users,
+  domains,
+} from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -96,6 +104,41 @@ export async function listLexiconEntries() {
   return db.select().from(lexiconEntries).orderBy(asc(lexiconEntries.canonicalName));
 }
 
+/**
+ * Safe catalog projection for logged-out visitors. It intentionally omits every
+ * premium manuscript field, including short/full definitions and relationships.
+ */
+const catalogEntryFields = {
+  id: lexiconEntries.id,
+  orbionId: lexiconEntries.orbionId,
+  slug: lexiconEntries.slug,
+  canonicalName: lexiconEntries.canonicalName,
+  acronym: lexiconEntries.acronym,
+  aliases: lexiconEntries.aliases,
+  publicTeaser: lexiconEntries.publicTeaser,
+  isPublicPreview: lexiconEntries.isPublicPreview,
+  publicPreviewDefinition: lexiconEntries.publicPreviewDefinition,
+  publicPreviewWhyItMatters: lexiconEntries.publicPreviewWhyItMatters,
+  publicPreviewRelatedSlugs: lexiconEntries.publicPreviewRelatedSlugs,
+  indexStatus: lexiconEntries.indexStatus,
+  domainIds: lexiconEntries.domainIds,
+  reviewStatus: lexiconEntries.reviewStatus,
+  updatedAt: lexiconEntries.updatedAt,
+};
+
+export async function listLexiconCatalogEntries() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select(catalogEntryFields).from(lexiconEntries).orderBy(asc(lexiconEntries.canonicalName));
+}
+
+export async function getLexiconCatalogEntryBySlug(slug: string) {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db.select(catalogEntryFields).from(lexiconEntries).where(eq(lexiconEntries.slug, slug)).limit(1);
+  return result[0];
+}
+
 export async function getLexiconEntryBySlug(slug: string) {
   const db = await getDb();
   if (!db) return undefined;
@@ -119,4 +162,29 @@ export async function listSourcesByOrbionIds(orbionIds: string[]) {
   const db = await getDb();
   if (!db || orbionIds.length === 0) return [];
   return db.select().from(sources).where(inArray(sources.orbionId, orbionIds));
+}
+
+/** A single, reusable authorization check for all server-side premium content paths. */
+export async function getActiveLexiconEntitlement(userId: number, at = new Date()) {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db
+    .select()
+    .from(lexiconEntitlements)
+    .where(
+      and(
+        eq(lexiconEntitlements.userId, userId),
+        eq(lexiconEntitlements.status, "active"),
+        gt(lexiconEntitlements.endsAt, at),
+      ),
+    )
+    .orderBy(desc(lexiconEntitlements.endsAt))
+    .limit(1);
+  return result[0];
+}
+
+export async function listLexiconPurchasesForUser(userId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(lexiconPurchases).where(eq(lexiconPurchases.userId, userId)).orderBy(desc(lexiconPurchases.createdAt));
 }

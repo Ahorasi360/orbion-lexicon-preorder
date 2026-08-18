@@ -18,7 +18,7 @@ export default function LexiconPage() {
   const results = useMemo(() => (data?.results ?? []).filter((entry: LexiconCardEntry) => {
     const matchesDomain = !domain || entry.domains.some(item => item.slug === domain);
     const matchesLetter = !letter || entry.canonicalName.toLocaleUpperCase().startsWith(letter);
-    const searchable = [entry.canonicalName, entry.acronym ?? "", entry.shortDefinition, ...entry.aliases, ...entry.domains.map(item => item.name)].join(" ").toLocaleLowerCase();
+    const searchable = [entry.canonicalName, entry.acronym ?? "", entry.publicTeaser, ...entry.aliases, ...entry.domains.map(item => item.name)].join(" ").toLocaleLowerCase();
     return matchesDomain && matchesLetter && (!normalizedQuery || searchable.includes(normalizedQuery));
   }), [data, domain, letter, normalizedQuery]);
   const activeFilter = [letter ? `Starts with ${letter}` : "", domain ? (domains ?? []).find((item: LexiconDomain) => item.slug === domain)?.name ?? "" : "", normalizedQuery ? `“${query.trim()}”` : ""].filter(Boolean).join(" · ");

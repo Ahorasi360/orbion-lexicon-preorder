@@ -1,6 +1,11 @@
 export type OrbionAnalyticsEvent =
   | "lexicon_search"
   | "lexicon_entry_view"
+  | "preview_entry_view"
+  | "locked_result_view"
+  | "locked_result_click"
+  | "paywall_view"
+  | "access_cta_click"
   | "related_term_click"
   | "domain_view"
   | "map_open"

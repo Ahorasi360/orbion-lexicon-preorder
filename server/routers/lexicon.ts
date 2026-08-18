@@ -2,7 +2,10 @@ import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import type { Domain, LexiconEntry } from "../../drizzle/schema";
 import {
+  getActiveLexiconEntitlement,
+  getLexiconCatalogEntryBySlug,
   getLexiconEntryBySlug,
+  listLexiconCatalogEntries,
   listLexiconDomains,
   listLexiconEntries,
   listLexiconSources,
@@ -22,6 +25,8 @@ const searchInput = z.object({
   query: z.string().trim().min(1).max(120),
   limit: z.number().int().min(1).max(40).default(24),
 });
+
+type CatalogEntry = Awaited<ReturnType<typeof listLexiconCatalogEntries>>[number];
 
 export function normalizeStringArray(value: unknown): string[] {
   if (Array.isArray(value)) return value.filter((item): item is string => typeof item === "string");
@@ -45,15 +50,15 @@ function searchValue(value: string) {
     .trim();
 }
 
-export function scoreLexiconMatch(entry: LexiconEntry, rawQuery: string) {
+/** Catalog search deliberately ignores every premium manuscript field. */
+export function scoreLexiconMatch(entry: Pick<LexiconEntry, "canonicalName" | "acronym" | "aliases"> & { publicTeaser?: string | null }, rawQuery: string) {
   const query = searchValue(rawQuery);
   if (!query) return { score: 0, match: "" };
 
   const canonicalName = searchValue(entry.canonicalName);
   const acronym = searchValue(entry.acronym ?? "");
   const aliases = normalizeStringArray(entry.aliases);
-  const connectedConcepts = normalizeStringArray(entry.connectedConcepts);
-  const definition = searchValue(`${entry.shortDefinition} ${entry.fullDefinition}`);
+  const publicTeaser = searchValue(entry.publicTeaser ?? "");
 
   if (canonicalName === query) return { score: 100, match: "Exact term match" };
   if (acronym === query) return { score: 95, match: "Acronym match" };
@@ -61,8 +66,7 @@ export function scoreLexiconMatch(entry: LexiconEntry, rawQuery: string) {
   if (canonicalName.startsWith(query)) return { score: 80, match: "Term begins with your search" };
   if (aliases.some(alias => searchValue(alias).includes(query))) return { score: 70, match: "Alias contains your search" };
   if (canonicalName.includes(query)) return { score: 65, match: "Term contains your search" };
-  if (connectedConcepts.some(concept => searchValue(concept).includes(query))) return { score: 45, match: "Connected concept match" };
-  if (definition.includes(query)) return { score: 25, match: "Definition match" };
+  if (publicTeaser.includes(query)) return { score: 25, match: "Public catalog teaser match" };
   return { score: 0, match: "" };
 }
 
@@ -70,7 +74,11 @@ function domainMap(domains: Domain[]) {
   return new Map(domains.map(domain => [domain.id, domain]));
 }
 
-function compactEntry(entry: LexiconEntry, domainsById: Map<number, Domain>) {
+function catalogTeaser(entry: CatalogEntry) {
+  return entry.publicTeaser ?? "A full Orbion Online Lexicon entry is available to members.";
+}
+
+export function catalogEntry(entry: CatalogEntry, domainsById: Map<number, Domain>) {
   const domainIds = normalizeStringArray(entry.domainIds).map(Number).filter(Number.isFinite);
   return {
     id: entry.id,
@@ -79,35 +87,54 @@ function compactEntry(entry: LexiconEntry, domainsById: Map<number, Domain>) {
     canonicalName: entry.canonicalName,
     acronym: entry.acronym,
     aliases: normalizeStringArray(entry.aliases),
-    shortDefinition: entry.shortDefinition,
-    evidenceStrength: entry.evidenceStrength,
+    publicTeaser: catalogTeaser(entry),
+    isPublicPreview: entry.isPublicPreview,
+    isLocked: !entry.isPublicPreview,
     reviewStatus: entry.reviewStatus,
-    bookReference: entry.bookReference,
     domains: domainIds.map(id => domainsById.get(id)).filter(Boolean).map(domain => ({
       id: domain!.id,
       slug: domain!.slug,
       name: domain!.name,
     })),
+    updatedAt: entry.updatedAt,
   };
+}
+
+export function lockedEntryPayload(entry: ReturnType<typeof catalogEntry>) {
+  return entry;
+}
+
+export function publicPreviewEntryPayload(entry: CatalogEntry, domainsById: Map<number, Domain>) {
+  const relatedSlugs = normalizeStringArray(entry.publicPreviewRelatedSlugs);
+  return {
+    ...catalogEntry(entry, domainsById),
+    isLocked: false,
+    preview: {
+      definition: entry.publicPreviewDefinition,
+      whyItMatters: entry.publicPreviewWhyItMatters,
+      relatedSlugs,
+    },
+  };
+}
+
+async function canReadPremium(userId: number | undefined) {
+  if (!userId) return false;
+  return Boolean(await getActiveLexiconEntitlement(userId));
 }
 
 export const lexiconRouter = router({
   summary: publicProcedure.query(async () => {
-    const [entries, domainRecords, sourceRecords] = await Promise.all([
-      listLexiconEntries(),
-      listLexiconDomains(),
-      listLexiconSources(),
-    ]);
+    const [entries, domainRecords] = await Promise.all([listLexiconCatalogEntries(), listLexiconDomains()]);
     return {
       entryCount: entries.length,
       domainCount: domainRecords.length,
-      sourceCount: sourceRecords.length,
-      reviewPendingCount: entries.filter(entry => entry.reviewStatus === "review_pending").length,
+      previewEntryCount: entries.filter(entry => entry.isPublicPreview).length,
+      lockedEntryCount: entries.filter(entry => !entry.isPublicPreview).length,
     };
   }),
 
   list: publicProcedure.input(listInput).query(async ({ input }) => {
-    const [entries, domainRecords] = await Promise.all([listLexiconEntries(), listLexiconDomains()]);
+    const [entries, domainRecords] = await Promise.all([listLexiconCatalogEntries(), listLexiconDomains()]);
     const domainsById = domainMap(domainRecords);
     const selectedDomain = input.domain ? domainRecords.find(domain => domain.slug === input.domain) : undefined;
     const letter = input.letter?.toLocaleUpperCase();
@@ -121,35 +148,62 @@ export const lexiconRouter = router({
         if (input.query && scoreLexiconMatch(entry, input.query).score === 0) return false;
         return true;
       })
-      .map(entry => ({ ...compactEntry(entry, domainsById), score: input.query ? scoreLexiconMatch(entry, input.query).score : undefined }))
+      .map(entry => ({ ...catalogEntry(entry, domainsById), score: input.query ? scoreLexiconMatch(entry, input.query).score : undefined }))
       .sort((left, right) => (right.score ?? 0) - (left.score ?? 0) || left.canonicalName.localeCompare(right.canonicalName))
       .slice(0, input.limit);
 
     return { results, total: results.length };
   }),
 
-  getBySlug: publicProcedure.input(z.object({ slug: z.string().trim().min(1).max(192) })).query(async ({ input }) => {
+  getBySlug: publicProcedure.input(z.object({ slug: z.string().trim().min(1).max(192) })).query(async ({ input, ctx }) => {
+    const catalog = await getLexiconCatalogEntryBySlug(input.slug);
+    if (!catalog) throw new TRPCError({ code: "NOT_FOUND", message: "Lexicon term not found." });
+
+    const [domainRecords, memberAccess] = await Promise.all([listLexiconDomains(), canReadPremium(ctx.user?.id)]);
+    const domainsById = domainMap(domainRecords);
+    const publicEntry = catalogEntry(catalog, domainsById);
+
+    const hasApprovedPreview = Boolean(catalog.isPublicPreview && catalog.publicPreviewDefinition);
+    if (!memberAccess && !hasApprovedPreview) {
+      return {
+        access: "locked" as const,
+        entry: lockedEntryPayload(publicEntry),
+        relatedEntries: [],
+        sources: [],
+      };
+    }
+
+    if (!memberAccess) {
+      const allCatalogEntries = await listLexiconCatalogEntries();
+      const relatedSlugs = normalizeStringArray(catalog.publicPreviewRelatedSlugs);
+      return {
+        access: "preview" as const,
+        entry: publicPreviewEntryPayload(catalog, domainsById),
+        relatedEntries: allCatalogEntries.filter(candidate => relatedSlugs.includes(candidate.slug)).map(candidate => catalogEntry(candidate, domainsById)),
+        sources: [],
+      };
+    }
+
     const entry = await getLexiconEntryBySlug(input.slug);
     if (!entry) throw new TRPCError({ code: "NOT_FOUND", message: "Lexicon term not found." });
-
-    const [allEntries, domainRecords] = await Promise.all([listLexiconEntries(), listLexiconDomains()]);
-    const domainsById = domainMap(domainRecords);
     const relatedIds = normalizeStringArray(entry.relatedEntryIds).map(Number).filter(Number.isFinite);
-    const referenceIds = normalizeStringArray(entry.primaryReferenceIds);
-    const [sourceRecords] = await Promise.all([listSourcesByOrbionIds(referenceIds)]);
+    const allCatalogEntries = await listLexiconCatalogEntries();
+    const sourceRecords = await listSourcesByOrbionIds(normalizeStringArray(entry.primaryReferenceIds));
 
     return {
-      entry: {
-        ...compactEntry(entry, domainsById),
+      access: "member" as const,
+      entry: { ...publicEntry, isLocked: false },
+      premium: {
         fullDefinition: entry.fullDefinition,
         whyItMatters: entry.whyItMatters,
         industryExample: entry.industryExample,
         dontConfuse: entry.dontConfuse,
         connectedConcepts: normalizeStringArray(entry.connectedConcepts),
         keyFacts: normalizeStringArray(entry.keyFacts),
-        updatedAt: entry.updatedAt,
+        evidenceStrength: entry.evidenceStrength,
+        bookReference: entry.bookReference,
       },
-      relatedEntries: allEntries.filter(candidate => relatedIds.includes(candidate.id)).map(candidate => compactEntry(candidate, domainsById)),
+      relatedEntries: allCatalogEntries.filter(candidate => relatedIds.includes(candidate.id)).map(candidate => catalogEntry(candidate, domainsById)),
       sources: sourceRecords.map(source => ({
         orbionId: source.orbionId,
         title: source.title,
@@ -164,21 +218,21 @@ export const lexiconRouter = router({
   domains: publicProcedure.query(async () => listLexiconDomains()),
 
   getDomain: publicProcedure.input(z.object({ slug: z.string().trim().min(1).max(128) })).query(async ({ input }) => {
-    const [domainRecords, entries] = await Promise.all([listLexiconDomains(), listLexiconEntries()]);
+    const [domainRecords, entries] = await Promise.all([listLexiconDomains(), listLexiconCatalogEntries()]);
     const domain = domainRecords.find(candidate => candidate.slug === input.slug);
     if (!domain) throw new TRPCError({ code: "NOT_FOUND", message: "Domain not found." });
     const domainsById = domainMap(domainRecords);
     const domainEntries = entries
       .filter(entry => normalizeStringArray(entry.domainIds).map(Number).includes(domain.id))
-      .map(entry => compactEntry(entry, domainsById));
+      .map(entry => catalogEntry(entry, domainsById));
     return { domain, entries: domainEntries };
   }),
 
   search: publicProcedure.input(searchInput).query(async ({ input }) => {
-    const [entries, domainRecords] = await Promise.all([listLexiconEntries(), listLexiconDomains()]);
+    const [entries, domainRecords] = await Promise.all([listLexiconCatalogEntries(), listLexiconDomains()]);
     const domainsById = domainMap(domainRecords);
     const entryResults = entries
-      .map(entry => ({ entry: compactEntry(entry, domainsById), ...scoreLexiconMatch(entry, input.query) }))
+      .map(entry => ({ entry: catalogEntry(entry, domainsById), ...scoreLexiconMatch(entry, input.query) }))
       .filter(result => result.score > 0)
       .sort((left, right) => right.score - left.score || left.entry.canonicalName.localeCompare(right.entry.canonicalName))
       .slice(0, input.limit);
@@ -195,9 +249,16 @@ export const lexiconRouter = router({
     return { entries: entryResults, domains: domainResults };
   }),
 
-  sources: publicProcedure.input(z.object({ query: z.string().trim().min(1).max(120).optional() })).query(async ({ input }) => {
+  /** Source records are premium evidence material and never returned to logged-out visitors. */
+  sources: publicProcedure.input(z.object({ query: z.string().trim().min(1).max(120).optional() })).query(async ({ input, ctx }) => {
+    if (!(await canReadPremium(ctx.user?.id))) {
+      return { access: "locked" as const, results: [] };
+    }
     const sourceRecords = await listLexiconSources();
     const query = input.query ? searchValue(input.query) : "";
-    return sourceRecords.filter(source => !query || searchValue(`${source.orbionId} ${source.title} ${source.publisher ?? ""}`).includes(query));
+    return {
+      access: "member" as const,
+      results: sourceRecords.filter(source => !query || searchValue(`${source.orbionId} ${source.title} ${source.publisher ?? ""}`).includes(query)),
+    };
   }),
 });
