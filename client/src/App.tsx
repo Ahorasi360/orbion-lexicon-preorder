@@ -18,6 +18,9 @@ const SourcesPage = lazy(() => import("./pages/SourcesPage"));
 const SearchPage = lazy(() => import("./pages/SearchPage"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
 const IntelligencePage = lazy(() => import("./pages/IntelligencePage"));
+const AccountPage = lazy(() => import("./pages/AccountPage"));
+const OnlineAccessPage = lazy(() => import("./pages/OnlineAccessPage"));
+const OnlineAccessSuccessPage = lazy(() => import("./pages/OnlineAccessSuccessPage"));
 const LegalPage = lazy(() => import("./pages/LegalPage"));
 
 function Router() {
@@ -28,6 +31,8 @@ function Router() {
       <Route path={"/"} component={PlatformHome} />
       <Route path={"/book"} component={BookPage} />
       <Route path={"/lexicon"} component={LexiconPage} />
+      <Route path={"/lexicon/access/success"} component={OnlineAccessSuccessPage} />
+      <Route path={"/lexicon/access"} component={OnlineAccessPage} />
       <Route path={"/lexicon/:term"} component={LexiconEntryPage} />
       <Route path={"/domains"} component={DomainsPage} />
       <Route path={"/domains/:domain"} component={DomainPage} />
@@ -37,6 +42,7 @@ function Router() {
       <Route path={"/search"} component={SearchPage} />
       <Route path={"/about"} component={AboutPage} />
       <Route path={"/intelligence"} component={IntelligencePage} />
+      <Route path={"/account"} component={AccountPage} />
       <Route path={"/terms-of-sale"}>{() => <LegalPage slug="terms-of-sale" />}</Route>
       <Route path={"/preorder-refund-policy"}>{() => <LegalPage slug="preorder-refund-policy" />}</Route>
       <Route path={"/shipping-delay-policy"}>{() => <LegalPage slug="shipping-delay-policy" />}</Route>

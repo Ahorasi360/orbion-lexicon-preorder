@@ -2,6 +2,7 @@ import { Menu, Search, X } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import Seo, { routeMeta } from "@/components/Seo";
+import { useAuth } from "@/_core/hooks/useAuth";
 
 const primaryLinks = [
   { href: "/", label: "Explore" },
@@ -15,6 +16,7 @@ const primaryLinks = [
 export default function PlatformShell({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { isAuthenticated } = useAuth();
   const canonicalPath = location.split("?")[0] || "/";
   const metadata = routeMeta[canonicalPath];
 
@@ -43,6 +45,9 @@ export default function PlatformShell({ children }: { children: React.ReactNode 
             <Link href="/search" className="platform-search-link" onClick={() => setMobileOpen(false)}>
               <Search size={15} aria-hidden="true" />
               Search
+            </Link>
+            <Link href="/account" className="platform-account-link" onClick={() => setMobileOpen(false)}>
+              {isAuthenticated ? "My Account" : "Sign in"}
             </Link>
             <Link href="/intelligence" className="intelligence-link" onClick={() => setMobileOpen(false)}>
               Orbion Intelligence <span aria-hidden="true">→</span>
@@ -85,6 +90,7 @@ export default function PlatformShell({ children }: { children: React.ReactNode 
               <Link href="/methodology">Methodology</Link>
               <Link href="/sources">Sources</Link>
               <Link href="/contact">Contact</Link>
+              <Link href="/account">My Account</Link>
             </div>
             <div>
               <strong>Orbion Intelligence</strong>

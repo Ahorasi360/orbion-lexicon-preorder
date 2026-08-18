@@ -7,6 +7,7 @@ export type SeoProps = {
   description: string;
   canonicalPath: string;
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
+  noindex?: boolean;
 };
 
 function setMeta(selector: string, attribute: "name" | "property", key: string, content: string) {
@@ -19,7 +20,7 @@ function setMeta(selector: string, attribute: "name" | "property", key: string, 
   element.content = content;
 }
 
-export function applySeo({ title, description, canonicalPath, structuredData }: SeoProps) {
+export function applySeo({ title, description, canonicalPath, structuredData, noindex }: SeoProps) {
   const canonicalUrl = `${siteUrl}${canonicalPath}`;
   document.title = title;
   setMeta('meta[name="description"]', "name", "description", description);
@@ -37,6 +38,8 @@ export function applySeo({ title, description, canonicalPath, structuredData }: 
   }
   canonical.href = canonicalUrl;
 
+  setMeta('meta[name="robots"]', "name", "robots", noindex ? "noindex, nofollow" : "index, follow");
+
   const schemaId = "orbion-route-schema";
   document.getElementById(schemaId)?.remove();
   if (structuredData) {
@@ -49,7 +52,7 @@ export function applySeo({ title, description, canonicalPath, structuredData }: 
 }
 
 export default function Seo(props: SeoProps) {
-  useEffect(() => { applySeo(props); }, [props.title, props.description, props.canonicalPath, props.structuredData]);
+  useEffect(() => { applySeo(props); }, [props.title, props.description, props.canonicalPath, props.structuredData, props.noindex]);
   return null;
 }
 

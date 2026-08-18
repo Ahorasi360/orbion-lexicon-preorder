@@ -1,0 +1,2 @@
+ALTER TABLE `lexicon_purchases` ADD `provider_reference_token` varchar(128) NOT NULL;--> statement-breakpoint
+ALTER TABLE `lexicon_purchases` ADD CONSTRAINT `lexicon_purchases_provider_reference_token_unique` UNIQUE(`provider_reference_token`);
