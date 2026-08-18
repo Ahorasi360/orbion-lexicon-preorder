@@ -124,5 +124,5 @@
 - [x] Make the server-side owner-preview authorization null-safe, then run type and regression tests before enabling the owner override
 - [x] Add end-to-end Lexicon route coverage proving an admin receives full entry access without an entitlement while an ordinary signed-in user remains locked
 - [x] Add account-status coverage proving admin users receive only `owner_preview` mode and ordinary signed-in users do not
-- [ ] Harden Online Lexicon webhook idempotency so duplicate or concurrent Stripe deliveries cannot reprocess a purchase, including repeated-event tests
+- [x] Harden Online Lexicon webhook idempotency so duplicate or concurrent Stripe deliveries cannot reprocess a purchase, including repeated-event tests
 - [x] Correct route precedence so Online Lexicon access and payment-status paths resolve before dynamic `/lexicon/:term` entries

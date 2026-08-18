@@ -86,7 +86,7 @@ type StripeWebhookEvent = {
   data: { object: Record<string, unknown> };
 };
 
-async function processVerifiedStripeEvent(event: StripeWebhookEvent, payloadHash: string) {
+export async function processVerifiedStripeEvent(event: StripeWebhookEvent, payloadHash: string) {
   const config = onlineAccessConfig();
   const claimed = await claimLexiconWebhookEvent({ providerEventId: event.id, eventType: event.type, payloadHash });
   if (!claimed.claimed || !claimed.eventId) return;
