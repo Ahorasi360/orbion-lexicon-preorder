@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { LexiconEntry } from "../../drizzle/schema";
-import { catalogEntry, lockedEntryPayload, normalizeStringArray, publicPreviewEntryPayload, scoreLexiconMatch } from "./lexicon";
+import { catalogEntry, isOwnerLexiconPreview, lockedEntryPayload, normalizeStringArray, publicPreviewEntryPayload, scoreLexiconMatch } from "./lexicon";
 
 const entry = {
   canonicalName: "Spaceflight",
@@ -55,8 +55,14 @@ describe("Lexicon search helpers", () => {
     expect(preview).not.toHaveProperty("whyItMatters");
     expect(preview.preview).toEqual({
       definition: "Approved public sample only.",
-      context: "Approved public context only.",
+      whyItMatters: "Approved public context only.",
       relatedSlugs: ["related-sample"],
     });
+  });
+
+  it("allows owner preview only for the trusted administrator role", () => {
+    expect(isOwnerLexiconPreview({ role: "admin" })).toBe(true);
+    expect(isOwnerLexiconPreview({ role: "user" })).toBe(false);
+    expect(isOwnerLexiconPreview(undefined)).toBe(false);
   });
 });

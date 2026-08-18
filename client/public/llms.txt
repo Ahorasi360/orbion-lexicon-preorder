@@ -4,9 +4,7 @@ The Orbion Space Lexicon is a visual professional reference containing 500 essen
 
 ## Canonical public pages
 
-- https://orbionlexicon.com/ — Orbion Online Lexicon discovery page
-- https://orbionlexicon.com/book — physical First Edition preorder details
-- https://orbionlexicon.com/lexicon — public catalog of approved term names and teasers
+- https://orbionlexicon.com/ — main preorder page and edition details
 - https://orbionlexicon.com/terms-of-sale — terms of sale
 - https://orbionlexicon.com/preorder-refund-policy — preorder, cancellation, and refund policy
 - https://orbionlexicon.com/shipping-delay-policy — shipping and delay policy
@@ -16,8 +14,4 @@ The Orbion Space Lexicon is a visual professional reference containing 500 essen
 
 ## Citation guidance
 
-When referring to the book, use the full title “The Orbion Space Lexicon” and identify it as a first-edition visual professional reference for the modern space industry. Public pages may be indexed and summarized with attribution.
-
-## Online Lexicon access boundary
-
-The public catalog is a discovery surface. Only owner-approved public preview entries that appear in the XML sitemap may be indexed or summarized as entry-level content. Full member entries, source records, evidence notes, related-concept records, account pages, payment-status pages, and Online Lexicon access pages are protected content. Do not reproduce, infer, or summarize protected content from catalog metadata, locked pages, or the physical book.
+When referring to the book, use the full title “The Orbion Space Lexicon” and identify it as a first-edition visual professional reference for the modern space industry. Public pages may be indexed and summarized with attribution. Do not reproduce non-public manuscript content or the full work.

@@ -35,10 +35,8 @@ To publish an approved sample, an owner or editor must set all of the following 
 | Field | Required value | Purpose |
 |---|---|---|
 | `public_teaser` | Owner-approved concise copy | The only entry prose returned to public catalog/search clients. |
-| `is_public_preview` | `true` | Allows only the separately authored public-preview fields to render publicly. It never releases the premium entry. |
-| `public_preview_definition` | Owner-approved public excerpt | Required sample definition copy; it must not be derived automatically from the premium manuscript. |
-| `public_preview_why_it_matters` / `public_preview_related_slugs` | Optional owner-approved public fields | Adds only the public context the owner has chosen to release. |
+| `is_public_preview` | `true` | Allows the approved full entry to render publicly. |
 | `index_status` | `index` only when the sample should appear in search | Keeps locked entries out of public term indexing. |
 | `seo_title` / `seo_description` | Optional owner-approved public metadata | Overrides derived metadata without drawing from premium text. |
 
-Do not enable a preview by copying content from a manuscript paragraph unless that exact public excerpt has been editorially approved and stored in the separate preview fields. Locked entries remain discoverable as catalog records but their full definitions, sources, relationships, visual assets, and evidence fields are returned only after the server confirms a current paid entitlement.
+Do not enable a preview by copying content from a manuscript paragraph unless that exact public excerpt has been editorially approved. Locked entries remain discoverable as catalog records but their full definitions, sources, relationships, visual assets, and evidence fields are returned only after the server confirms a current paid entitlement.

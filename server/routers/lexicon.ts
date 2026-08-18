@@ -89,7 +89,6 @@ export function catalogEntry(entry: CatalogEntry, domainsById: Map<number, Domai
     aliases: normalizeStringArray(entry.aliases),
     publicTeaser: catalogTeaser(entry),
     isPublicPreview: entry.isPublicPreview,
-    indexStatus: entry.indexStatus,
     isLocked: !entry.isPublicPreview,
     reviewStatus: entry.reviewStatus,
     domains: domainIds.map(id => domainsById.get(id)).filter(Boolean).map(domain => ({
@@ -112,15 +111,20 @@ export function publicPreviewEntryPayload(entry: CatalogEntry, domainsById: Map<
     isLocked: false,
     preview: {
       definition: entry.publicPreviewDefinition,
-      context: entry.publicPreviewWhyItMatters,
+      whyItMatters: entry.publicPreviewWhyItMatters,
       relatedSlugs,
     },
   };
 }
 
-async function canReadPremium(userId: number | undefined) {
-  if (!userId) return false;
-  return Boolean(await getActiveLexiconEntitlement(userId));
+export function isOwnerLexiconPreview(user: { role?: string } | null | undefined) {
+  return user?.role === "admin";
+}
+
+async function canReadPremium(user: { id: number; role?: string } | null | undefined) {
+  if (!user) return false;
+  if (isOwnerLexiconPreview(user)) return true;
+  return Boolean(await getActiveLexiconEntitlement(user.id));
 }
 
 export const lexiconRouter = router({
@@ -160,7 +164,7 @@ export const lexiconRouter = router({
     const catalog = await getLexiconCatalogEntryBySlug(input.slug);
     if (!catalog) throw new TRPCError({ code: "NOT_FOUND", message: "Lexicon term not found." });
 
-    const [domainRecords, memberAccess] = await Promise.all([listLexiconDomains(), canReadPremium(ctx.user?.id)]);
+    const [domainRecords, memberAccess] = await Promise.all([listLexiconDomains(), canReadPremium(ctx.user)]);
     const domainsById = domainMap(domainRecords);
     const publicEntry = catalogEntry(catalog, domainsById);
 
@@ -252,7 +256,7 @@ export const lexiconRouter = router({
 
   /** Source records are premium evidence material and never returned to logged-out visitors. */
   sources: publicProcedure.input(z.object({ query: z.string().trim().min(1).max(120).optional() })).query(async ({ input, ctx }) => {
-    if (!(await canReadPremium(ctx.user?.id))) {
+    if (!(await canReadPremium(ctx.user))) {
       return { access: "locked" as const, results: [] };
     }
     const sourceRecords = await listLexiconSources();

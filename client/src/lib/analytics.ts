@@ -13,10 +13,7 @@ export type OrbionAnalyticsEvent =
   | "book_cta_click"
   | "intelligence_cta_click"
   | "preorder_click"
-  | "waitlist_signup"
-  | "online_access_view"
-  | "online_access_checkout_start"
-  | "online_access_status_view";
+  | "waitlist_signup";
 
 /**
  * Vendor-neutral client event hook. A future analytics integration can listen

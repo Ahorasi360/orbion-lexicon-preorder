@@ -1,6 +1,6 @@
 {
   "baseUrl": "http://127.0.0.1:3000",
-  "checkedAt": "2026-08-18T08:01:54.256Z",
+  "checkedAt": "2026-08-17T04:50:20.821Z",
   "routeCount": 18,
   "viewportCount": 2,
   "failures": [],
@@ -55,38 +55,38 @@
       "overflow": false,
       "focusSamples": [
         {
-          "tag": "a",
+          "tag": "button",
           "text": "THE ORBIONSPACE LEXICON",
           "visible": true,
           "focusStyle": "solid"
         },
         {
           "tag": "a",
-          "text": "Explore",
+          "text": "Online Lexicon",
           "visible": true,
           "focusStyle": "solid"
         },
         {
-          "tag": "a",
-          "text": "Lexicon",
+          "tag": "button",
+          "text": "Collector’s Edition",
           "visible": true,
           "focusStyle": "solid"
         },
         {
-          "tag": "a",
-          "text": "Domains",
+          "tag": "button",
+          "text": "Editions",
           "visible": true,
           "focusStyle": "solid"
         },
         {
-          "tag": "a",
-          "text": "Maps",
+          "tag": "button",
+          "text": "Preview",
           "visible": true,
           "focusStyle": "solid"
         },
         {
-          "tag": "a",
-          "text": "Methodology",
+          "tag": "button",
+          "text": "Preorder",
           "visible": true,
           "focusStyle": "solid"
         }
@@ -816,7 +816,7 @@
         },
         {
           "tag": "button",
-          "text": "Menu",
+          "text": "Open navigation menu",
           "visible": true,
           "focusStyle": "solid"
         },
@@ -847,7 +847,7 @@
       "overflow": false,
       "focusSamples": [
         {
-          "tag": "a",
+          "tag": "button",
           "text": "THE ORBIONSPACE LEXICON",
           "visible": true,
           "focusStyle": "solid"
@@ -904,13 +904,7 @@
         },
         {
           "tag": "button",
-          "text": "Menu",
-          "visible": true,
-          "focusStyle": "solid"
-        },
-        {
-          "tag": "a",
-          "text": "Unlock annual access — $79 →",
+          "text": "Open navigation menu",
           "visible": true,
           "focusStyle": "solid"
         },
@@ -923,6 +917,12 @@
         {
           "tag": "button",
           "text": "All",
+          "visible": true,
+          "focusStyle": "solid"
+        },
+        {
+          "tag": "button",
+          "text": "A",
           "visible": true,
           "focusStyle": "solid"
         }
@@ -948,7 +948,7 @@
         },
         {
           "tag": "button",
-          "text": "Menu",
+          "text": "Open navigation menu",
           "visible": true,
           "focusStyle": "solid"
         },
@@ -966,7 +966,7 @@
         },
         {
           "tag": "a",
-          "text": "Unlock annual access — $79",
+          "text": "How evidence is handled",
           "visible": true,
           "focusStyle": "solid"
         }
@@ -992,7 +992,7 @@
         },
         {
           "tag": "button",
-          "text": "Menu",
+          "text": "Open navigation menu",
           "visible": true,
           "focusStyle": "solid"
         },
@@ -1036,7 +1036,7 @@
         },
         {
           "tag": "button",
-          "text": "Menu",
+          "text": "Open navigation menu",
           "visible": true,
           "focusStyle": "solid"
         },
@@ -1080,7 +1080,7 @@
         },
         {
           "tag": "button",
-          "text": "Menu",
+          "text": "Open navigation menu",
           "visible": true,
           "focusStyle": "solid"
         },
@@ -1124,7 +1124,7 @@
         },
         {
           "tag": "button",
-          "text": "Menu",
+          "text": "Open navigation menu",
           "visible": true,
           "focusStyle": "solid"
         },
@@ -1168,13 +1168,13 @@
         },
         {
           "tag": "button",
-          "text": "Menu",
+          "text": "Open navigation menu",
           "visible": true,
           "focusStyle": "solid"
         },
         {
-          "tag": "a",
-          "text": "Unlock annual access — $79 →",
+          "tag": "input",
+          "text": "Filter source records",
           "visible": true,
           "focusStyle": "solid"
         },
@@ -1256,7 +1256,7 @@
         },
         {
           "tag": "button",
-          "text": "Menu",
+          "text": "Open navigation menu",
           "visible": true,
           "focusStyle": "solid"
         },
@@ -1300,7 +1300,7 @@
         },
         {
           "tag": "button",
-          "text": "Menu",
+          "text": "Open navigation menu",
           "visible": true,
           "focusStyle": "solid"
         },

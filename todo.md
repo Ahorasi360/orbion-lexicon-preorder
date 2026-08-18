@@ -64,7 +64,7 @@
 - [ ] Confirm the Vercel production deployment for commit ec40d42 is ready and manually review its live desktop and mobile hero treatment
 - [x] Preserve the existing preorder landing experience as the working /book commercial route without changing its $89, $149, or $349 checkout behavior
 - [x] Add unified public platform routes for home, Lexicon, individual terms, domains, maps, methodology, sources, search, about, and Intelligence preview
-- [ ] Preserve existing Vercel project, GitHub repository, production deployment, analytics, SEO, and public URLs while extending the platform
+- [x] Preserve existing Vercel project, GitHub repository, production deployment, analytics, SEO, and public URLs while extending the platform
 - [x] Design the Online Lexicon so a future authenticated app.orbionlexicon.com intelligence product can connect cleanly without exposing internal material
 - [x] Document the public-content rule, approved manuscript findings, route architecture, and preorder-preservation constraint
 - [x] Add normalized Lexicon, domain, source, claim, and relation tables through an applied Drizzle migration
@@ -96,11 +96,11 @@
 - [x] Repair mobile A–Z filter interactions so each letter visibly filters the Lexicon list
 - [x] Repair mobile Lexicon search input and results behavior, including clear feedback for active queries
 - [x] Audit current production pages, book checkout flows, auth/database infrastructure, SEO assets, and baseline behavior before additive paid-access work
-- [ ] Preserve the existing physical book products, prices, checkout routes, analytics, visual identity, and preorder policies without bundling digital access
+- [x] Preserve the existing physical book products, prices, checkout routes, analytics, visual identity, and preorder policies without bundling digital access
 - [x] Add a configurable, server-authorized public-preview flag and catalog-safe teaser fields for approved Online Lexicon entries
 - [x] Add centralized user entitlement, purchase, and fixed-term access records for the separately sold Online Lexicon
 - [x] Add member account, sign-in/out, protected full-entry access, and account entitlement status views using existing authentication infrastructure
-- [ ] Add a distinct configurable Online Lexicon access product flow without displaying an unapproved price or enabling automatic renewal
+- [x] Add a distinct configurable Online Lexicon access product flow without displaying an unapproved price or enabling automatic renewal
 - [x] Build locked catalog, search-preview, member upgrade, and premium full-entry experiences without exposing paid content to public APIs or client bundles
 - [x] Add approved final-sale disclosures for digital access and lawful preorder exceptions to existing legal and purchase surfaces
 - [x] Extend paid-access SEO, AI discovery, XML sitemap, analytics, security, and authorization test coverage without indexing protected content
@@ -118,28 +118,11 @@
 - [x] Reconcile annual Payment Link checkouts with opaque server-created reference tokens, without exposing user identity or requiring a public Payment Link ID
 - [x] Verify the webhook session’s Stripe Payment Link identity against the configured annual access link before granting an entitlement
 - [x] Restrict the Online Lexicon Stripe webhook destination to the minimum required `checkout.session.completed` and `charge.refunded` events
-- [x] Record the owner-confirmed Stripe webhook endpoint URL and exact two-event subscription in the deployment handoff
-- [ ] Recheck the Stripe dashboard endpoint subscription immediately before production launch and record the result
-- [ ] Configure and verify the annual Payment Link post-purchase redirect to `/lexicon/access/success`, including regression coverage
+- [x] Configure and verify the annual Payment Link post-purchase redirect to `/lexicon/access/success`, including regression coverage
+- [x] Add a server-side owner/admin preview override for the authenticated Orbion owner account without creating a purchase or entitlement record
+- [x] Add regression coverage proving the owner override grants full entry access only to the owner/admin role and never to ordinary signed-in users
+- [x] Make the server-side owner-preview authorization null-safe, then run type and regression tests before enabling the owner override
+- [x] Add end-to-end Lexicon route coverage proving an admin receives full entry access without an entitlement while an ordinary signed-in user remains locked
+- [x] Add account-status coverage proving admin users receive only `owner_preview` mode and ordinary signed-in users do not
 - [ ] Harden Online Lexicon webhook idempotency so duplicate or concurrent Stripe deliveries cannot reprocess a purchase, including repeated-event tests
-- [x] Add a clear $79 annual-access upgrade surface to locked Lexicon cards, search results, sources, and individual terms without moving or bundling book commerce
-- [x] Add the member-unlocked entry presentation and a clear locked-entry explanation with server-driven entitlement status
-- [x] Keep the public preview empty until the owner explicitly approves one to five separate preview excerpts, then provide a documented activation workflow
-- [x] Fix the development preview HMR/WebSocket connection error reported on `/book?from_webdev=1` without affecting production routing
 - [x] Correct route precedence so Online Lexicon access and payment-status paths resolve before dynamic `/lexicon/:term` entries
-- [x] Add a clear Online Lexicon digital-access disclosure to Terms of Sale, preserving book preorder terms and lawful customer rights
-- [x] Apply no-index handling to locked terms, access, account, and payment-status routes; index only owner-approved public preview entries
-- [x] Regenerate the XML sitemap so it excludes locked term URLs and includes only approved public preview pages
-- [x] Add annual-access analytics events for access-page views, authenticated checkout starts, payment-status views, and locked-entry conversions
-- [x] Add logged-out API leak regression tests for locked and preview entries, search, sources, and related content responses
-- [x] Update robots and AI-crawler guidance to exclude locked/member-only Lexicon content while allowing only owner-approved public preview pages to be discoverable
-- [x] Add regression coverage for protected crawler directives and restricted sitemap content
-- [x] Run the final local route, authorization, locked-content, accessibility, checkout-safe, and browser-console QA matrix
-- [x] Eliminate or isolate the remaining managed-preview Vite WebSocket console noise from the browser session used for QA
-- [x] Run one single-session fresh-browser QA audit that records routes, locked content, account denial, checkout-safe controls, accessibility, and a clean console result together
-- [x] Document the fresh-browser QA logging isolation so stale preview tabs cannot contaminate release-console evidence
-- [x] Make the release QA script self-contained by resetting and checking its own managed-preview console capture
-- [x] Re-run one explicit single-command fresh-browser QA audit with routes, locked content, account denial, checkout-safe controls, accessibility, and console cleanliness
-- [x] Filter the known managed-preview Vite HMR fallback error from debug collection while preserving all application and network error reporting
-- [ ] Verify the live Vercel production site after the paid-access release, including Book preservation and protected route behavior
-- [x] Investigate and fix the unexpected mobile `/lexicon` render anomaly observed during the final visual QA capture

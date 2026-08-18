@@ -1,49 +1,19 @@
 User-agent: *
 Allow: /
-Disallow: /account
-Disallow: /lexicon/access
-Disallow: /lexicon/access/
-Disallow: /sources
-Disallow: /search
 
 User-agent: GPTBot
 Allow: /
-Disallow: /account
-Disallow: /lexicon/access
-Disallow: /lexicon/access/
-Disallow: /sources
-Disallow: /search
 
 User-agent: ChatGPT-User
 Allow: /
-Disallow: /account
-Disallow: /lexicon/access
-Disallow: /lexicon/access/
-Disallow: /sources
-Disallow: /search
 
 User-agent: Google-Extended
 Allow: /
-Disallow: /account
-Disallow: /lexicon/access
-Disallow: /lexicon/access/
-Disallow: /sources
-Disallow: /search
 
 User-agent: ClaudeBot
 Allow: /
-Disallow: /account
-Disallow: /lexicon/access
-Disallow: /lexicon/access/
-Disallow: /sources
-Disallow: /search
 
 User-agent: PerplexityBot
 Allow: /
-Disallow: /account
-Disallow: /lexicon/access
-Disallow: /lexicon/access/
-Disallow: /sources
-Disallow: /search
 
 Sitemap: https://orbionlexicon.com/sitemap.xml

@@ -380,22 +380,9 @@
     error: console.error.bind(console),
   };
 
-  // The managed preview proxy does not provide Vite's HMR websocket upgrade.
-  // HMR is disabled server-side, but stale browser modules can emit this exact
-  // non-functional fallback error during a restart. Keep it out of release
-  // evidence without filtering any application or network failure.
-  function isManagedPreviewHmrFallback(value) {
-    var message = String(value || "");
-    return message.indexOf("[vite] failed to connect to websocket") !== -1 || (message.indexOf("WebSocket closed without opened") !== -1 && message.indexOf("/@vite/client") !== -1);
-  }
-
   ["log", "debug", "info", "warn", "error"].forEach(function (method) {
     console[method] = function () {
       var args = Array.prototype.slice.call(arguments);
-
-      if (method === "error" && isManagedPreviewHmrFallback(args.map(function (arg) { return typeof arg === "string" ? arg : (arg && arg.message) || ""; }).join(" "))) {
-        return;
-      }
 
       var entry = {
         timestamp: Date.now(),
@@ -440,10 +427,6 @@
 
   window.addEventListener("unhandledrejection", function (event) {
     var reason = event.reason;
-    if (isManagedPreviewHmrFallback([reason && reason.message, reason && reason.stack].filter(Boolean).join("\n"))) {
-      event.preventDefault();
-      return;
-    }
     store.consoleLogs.push({
       timestamp: Date.now(),
       level: "ERROR",

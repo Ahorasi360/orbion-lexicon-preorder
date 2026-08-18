@@ -38,10 +38,10 @@ export function EntryCard({ entry, showMatch }: { entry: LexiconCardEntry; showM
         {entry.isLocked ? <span className="entry-lock" aria-label="Members-only entry">Locked</span> : <ArrowUpRight size={16} aria-hidden="true" />}
       </div>
       <h3>{entry.canonicalName}{entry.acronym ? <small>{entry.acronym}</small> : null}</h3>
-      <p>{entry.isLocked ? "Member entry. Annual access unlocks the complete explanation, sources, and connected concepts." : entry.publicTeaser}</p>
+      <p>{entry.publicTeaser}</p>
       <div className="entry-card-foot">
         <span>{entry.domains[0]?.name ?? "Orbion Lexicon"}</span>
-        <span>{entry.isLocked ? "$79 annual access" : "Approved preview"}</span>
+        <span>{entry.isLocked ? "Online access" : "Preview entry"}</span>
       </div>
       {showMatch ? <span className="search-match">{showMatch}</span> : null}
     </Link>
