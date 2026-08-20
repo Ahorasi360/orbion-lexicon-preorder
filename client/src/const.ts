@@ -42,13 +42,13 @@ async function getOAuthClientConfig(): Promise<OAuthClientConfig> {
   return { appId: config.appId, portalUrl: config.portalUrl };
 }
 
-export const startLogin = async () => {
+export const startLogin = async (returnPath = `${window.location.pathname}${window.location.search}${window.location.hash}`) => {
   const { appId, portalUrl } = await getOAuthClientConfig();
   const redirectUri = `${window.location.origin}/api/oauth/callback`;
 
   const nonce = crypto.randomUUID();
   document.cookie = `${OAUTH_STATE_COOKIE}=${nonce}; Path=/; Max-Age=600; SameSite=None; Secure`;
-  const state = encodeOAuthState({ redirectUri, nonce });
+  const state = encodeOAuthState({ redirectUri, returnPath, nonce });
 
   const url = new URL(`${portalUrl}/app-auth`);
   url.searchParams.set("appId", appId);
