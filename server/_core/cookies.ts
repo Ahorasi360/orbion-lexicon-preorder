@@ -21,6 +21,11 @@ function isSecureRequest(req: Request) {
   return protoList.some(proto => proto.trim().toLowerCase() === "https");
 }
 
+function isLocalRequest(req: Request) {
+  const host = (req.hostname || req.headers.host || "").split(":")[0].toLowerCase();
+  return LOCAL_HOSTS.has(host) || isIpAddress(host);
+}
+
 export function getSessionCookieOptions(
   req: Request
 ): Pick<CookieOptions, "domain" | "httpOnly" | "path" | "sameSite" | "secure"> {
@@ -39,10 +44,17 @@ export function getSessionCookieOptions(
   //       ? hostname
   //       : undefined;
 
+  // A Vercel rewrite can arrive at Express as HTTP while the browser itself is
+  // on HTTPS. SameSite=None cookies without Secure are rejected by modern
+  // browsers, which makes an otherwise successful OAuth callback appear to do
+  // nothing. Non-local public hosts must therefore always receive a Secure
+  // cookie; localhost keeps a development-friendly Lax cookie.
+  const secure = isSecureRequest(req) || !isLocalRequest(req);
+
   return {
     httpOnly: true,
     path: "/",
-    sameSite: "none",
-    secure: isSecureRequest(req),
+    sameSite: secure ? "none" : "lax",
+    secure,
   };
 }
