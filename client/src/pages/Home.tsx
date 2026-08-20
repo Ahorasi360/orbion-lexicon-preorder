@@ -9,6 +9,7 @@ import { trpc } from "@/lib/trpc";
 import { trackEvent } from "@/lib/analytics";
 import { editions as editionCatalog } from "@/data/editions";
 import { PolicyLinks } from "@/pages/LegalPage";
+import ReleaseCountdown from "@/components/ReleaseCountdown";
 
 const productMockup = "/manus-storage/orbion-collector-edition-mockup_42a870c0.png";
 const starterPackUrl = "/manus-storage/orbion-space-industry-starter-pack_f0e10736.pdf";
@@ -92,7 +93,7 @@ export default function Home() {
       <main id="top">
         <section className="hero section-shell">
           <div className="orbital-glow" aria-hidden="true" />
-          <div className="hero-copy"><p className="eyebrow"><Sparkles className="h-4 w-4" /> FIRST EDITION · 2027</p><h1>The Orbion<br /><em>Space Lexicon</em></h1><p className="hero-tagline">500 essential concepts for the modern space industry</p><p className="hero-body">A visually led professional reference that turns the language of modern spaceflight into a practical system of understanding.</p><div className="hero-actions"><Button onClick={() => goToPreorder("book_hero")} className="collector-button">Join the preorder list <ChevronDown className="ml-2 h-4 w-4" /></Button><button className="text-link" onClick={() => scrollTo("preview")}>Read the illustrated preview</button></div><div className="hero-meta"><span>EXPECTED DELIVERY</span><strong>JANUARY 1, 2027</strong></div></div>
+          <div className="hero-copy"><p className="eyebrow"><Sparkles className="h-4 w-4" /> FIRST EDITION · 2027</p><h1>The Orbion<br /><em>Space Lexicon</em></h1><p className="hero-tagline">500 essential concepts for the modern space industry</p><p className="hero-body">A visually led professional reference that turns the language of modern spaceflight into a practical system of understanding.</p><div className="hero-actions"><Button onClick={() => goToPreorder("book_hero")} className="collector-button">Join the preorder list <ChevronDown className="ml-2 h-4 w-4" /></Button><button className="text-link" onClick={() => scrollTo("preview")}>Read the illustrated preview</button></div><div className="hero-meta"><span>EXPECTED DELIVERY</span><strong>JANUARY 1, 2027</strong></div><ReleaseCountdown /></div>
           <div className="hero-product"><div className="product-halo" aria-hidden="true" /><img src={productMockup} alt="The Orbion Space Lexicon 2027 Collector’s Edition hardcover, presentation box, certificate, and numbered plate" /><p>2027 First 1,000 Collector’s Edition <span>·</span> $349</p></div>
         </section>
         <section className="visual-proof section-shell">
