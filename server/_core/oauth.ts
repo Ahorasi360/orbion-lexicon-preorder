@@ -4,6 +4,25 @@ import type { Express, Request, Response } from "express";
 import * as db from "../db";
 import { getSessionCookieOptions } from "./cookies";
 import { sdk } from "./sdk";
+import { ENV } from "./env";
+import { randomUUID } from "crypto";
+
+const DEFAULT_OAUTH_PORTAL_URL = "https://manus.im";
+
+export function getSafePostLoginPath(returnPath: string | undefined) {
+  if (!returnPath || !returnPath.startsWith("/") || returnPath.startsWith("//") || returnPath.includes("\\")) {
+    return "/";
+  }
+  return returnPath;
+}
+
+export function getPublicOAuthConfig() {
+  return {
+    appId: ENV.appId,
+    portalUrl: process.env.VITE_OAUTH_PORTAL_URL || DEFAULT_OAUTH_PORTAL_URL,
+    appTitle: process.env.VITE_APP_TITLE || "Orbion Online Lexicon",
+  };
+}
 
 function getQueryParam(req: Request, key: string): string | undefined {
   const value = req.query[key];
@@ -11,6 +30,16 @@ function getQueryParam(req: Request, key: string): string | undefined {
 }
 
 export function registerOAuthRoutes(app: Express) {
+  app.get("/api/oauth/config", (_req: Request, res: Response) => {
+    const config = getPublicOAuthConfig();
+    if (!config.appId || !config.portalUrl) {
+      res.status(503).json({ error: "OAuth configuration is unavailable" });
+      return;
+    }
+    res.setHeader("Cache-Control", "no-store");
+    res.json(config);
+  });
+
   app.get("/api/oauth/callback", async (req: Request, res: Response) => {
     const code = getQueryParam(req, "code");
     const state = getQueryParam(req, "state");
@@ -23,7 +52,7 @@ export function registerOAuthRoutes(app: Express) {
     // CSRF guard: the nonce in `state` must match the one-time cookie that
     // startLogin set in the browser that began this login. An attacker can
     // forge `state`, but cannot plant this cookie in the victim's browser.
-    const { nonce } = decodeOAuthState(state);
+    const { nonce, returnPath } = decodeOAuthState(state);
     const expectedNonce = parseCookieHeader(req.headers.cookie ?? "")[OAUTH_STATE_COOKIE];
     if (!nonce || nonce !== expectedNonce) {
       res.status(403).json({ error: "invalid oauth state" });
@@ -48,15 +77,24 @@ export function registerOAuthRoutes(app: Express) {
         lastSignedIn: new Date(),
       });
 
+      const user = await db.getUserByOpenId(userInfo.openId);
+      if (!user) {
+        res.status(500).json({ error: "Unable to create account session" });
+        return;
+      }
+      const sessionId = randomUUID();
+      await db.setActiveUserSession(user.id, sessionId);
+
       const sessionToken = await sdk.createSessionToken(userInfo.openId, {
         name: userInfo.name || "",
         expiresInMs: ONE_YEAR_MS,
+        sessionId,
       });
 
       const cookieOptions = getSessionCookieOptions(req);
       res.cookie(COOKIE_NAME, sessionToken, { ...cookieOptions, maxAge: ONE_YEAR_MS });
 
-      res.redirect(302, "/");
+      res.redirect(302, getSafePostLoginPath(returnPath));
     } catch (error) {
       console.error("[OAuth] Callback failed", error);
       res.status(500).json({ error: "OAuth callback failed" });
